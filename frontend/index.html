@@ -22,14 +22,14 @@
         <div class="hero-copy">
           <p class="eyebrow">Syntrix Reasoning Engine</p>
           <h1>Syntrix</h1>
-          <p class="tagline">From scattered Copilot usage to personalized AI agents</p>
+          <p class="tagline">From scattered Copilot usage to personalized AI agents.</p>
           <p class="hero-text">
             Syntrix watches synthetic Copilot-style work patterns, discovers repeated workflows,
             scores agent opportunities, and generates safe personalized agent blueprints.
           </p>
           <div class="hero-actions">
             <a href="#analysis" class="primary-action">Explore Demo</a>
-            <a href="/api/health" class="secondary-action">Health Check</a>
+            <a href="/docs" class="secondary-action">API Docs</a>
           </div>
         </div>
         <div class="signal-core" aria-label="Animated synthetic work-pattern signal field">
@@ -51,22 +51,27 @@
       <section class="story section-band">
         <div>
           <p class="eyebrow">Problem Story</p>
-          <h2>Companies bought Copilot. Most teams still have to invent their own agents.</h2>
+          <h2>Companies bought Copilot. Most teams still don’t know which agents they need.</h2>
         </div>
         <p>
-          Syntrix flips the workflow. Users do not start with a blank agent builder.
-          The system studies synthetic work interactions, identifies where repeated effort already exists,
-          and recommends governed agents that match the user's actual work patterns.
+          Syntrix uses a Master Agent to study work signals, detect repeated effort, and coordinate
+          specialized agents for pattern discovery, opportunity scoring, blueprint generation, and
+          governance review. The result is a set of designed, governed agents that match how work
+          is already happening.
         </p>
       </section>
 
       <section id="analysis" class="section-grid">
         <aside class="control-panel">
-          <p class="eyebrow">Synthetic Profile</p>
-          <label for="profileSelect">Analyze role</label>
+          <p class="eyebrow">Workspace Signal Snapshot</p>
+          <label for="profileSelect">Connected workspace view</label>
           <select id="profileSelect"></select>
-          <div class="boundary-note">
-            Synthetic data only. No real emails, real customers, real employees, or confidential content.
+          <div class="workspace-context">
+            <span class="pulse-dot"></span>
+            <div>
+              <strong>Simulated Copilot workspace</strong>
+              <small>Streaming role-level patterns into the Syntrix Reasoning Engine</small>
+            </div>
           </div>
           <div class="metric-stack">
             <div><span id="metricInteractions">--</span><small>Interactions</small></div>

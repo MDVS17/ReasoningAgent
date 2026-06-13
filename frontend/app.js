@@ -122,8 +122,16 @@ function renderAnalysis() {
 
 async function loadProfiles() {
   const payload = await api("/api/profiles");
+  const labels = {
+    "All roles": "All workspace signals",
+    "Marketing Manager": "Marketing launch workspace",
+    "Project Manager": "Delivery operations workspace",
+    "HR Business Partner": "People advisory workspace",
+  };
   const options = [{ profile: "All roles" }, ...payload.data];
-  $("profileSelect").innerHTML = options.map((item) => `<option>${item.profile}</option>`).join("");
+  $("profileSelect").innerHTML = options
+    .map((item) => `<option value="${item.profile}">${labels[item.profile] || item.profile}</option>`)
+    .join("");
 }
 
 async function refreshDemo() {
