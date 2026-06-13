@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant U as Synthetic User Profile
+    participant L as Copilot-style Logs
+    participant P as Pattern Discovery Agent
+    participant S as Opportunity Scoring Agent
+    participant B as Blueprint Generation Agent
+    participant G as Safety Review Agent
+    participant C as Continuous Improvement Agent
+
+    U->>L: Produces synthetic work interactions
+    L->>P: Group prompts by workflow
+    P->>S: Send repeated patterns and metrics
+    S->>B: Rank agent opportunities
+    B->>G: Generate proposed Syntrix Agent Blueprint
+    G->>B: Add guardrails and approval gates
+    B->>C: Track outcomes across weeks
+    C->>S: Recommend scoring and trigger refinements

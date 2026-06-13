@@ -1,0 +1,25 @@
+interaction_id,date,week,profile,workflow,prompt_type,synthetic_prompt_summary,estimated_time_saved_minutes,repetition_score,business_value_score,risk_score
+MKT-001,2026-05-04,1,Marketing Manager,Campaign launch brief,Draft,Turn scattered product notes into a launch brief for sales and field marketing,32,5,5,2
+MKT-002,2026-05-05,1,Marketing Manager,Campaign launch brief,Summarize,Summarize stakeholder comments into campaign launch risks and owners,28,5,5,2
+MKT-003,2026-05-06,1,Marketing Manager,Weekly performance narrative,Analyze,Explain campaign metrics in plain language for leadership review,24,4,4,2
+MKT-004,2026-05-08,1,Marketing Manager,Content repurposing plan,Plan,Convert webinar notes into social posts email copy and sales snippets,36,4,4,2
+MKT-005,2026-05-11,2,Marketing Manager,Campaign launch brief,Draft,Create a launch readiness checklist from synthetic campaign inputs,30,5,5,2
+MKT-006,2026-05-12,2,Marketing Manager,Weekly performance narrative,Summarize,Write a weekly campaign performance update with risks and next actions,26,4,4,2
+MKT-007,2026-05-18,3,Marketing Manager,Campaign launch brief,Plan,Build a stakeholder follow-up plan for launch blockers,34,5,5,2
+MKT-008,2026-05-19,3,Marketing Manager,Content repurposing plan,Draft,Draft channel-specific copy from approved synthetic campaign messaging,38,4,4,2
+PM-001,2026-05-04,1,Project Manager,Executive status update,Summarize,Summarize delivery updates into a concise executive status narrative,35,5,5,2
+PM-002,2026-05-05,1,Project Manager,Risk and dependency tracker,Analyze,Find risks dependencies and missing owners from project notes,42,5,5,3
+PM-003,2026-05-07,1,Project Manager,Meeting action follow-up,Draft,Create action items owners and due dates from meeting notes,28,5,4,2
+PM-004,2026-05-11,2,Project Manager,Executive status update,Draft,Turn project updates into green yellow red status for leaders,33,5,5,2
+PM-005,2026-05-12,2,Project Manager,Risk and dependency tracker,Plan,Recommend mitigation steps for cross-team dependency slips,40,5,5,3
+PM-006,2026-05-14,2,Project Manager,Meeting action follow-up,Summarize,Condense meeting discussion into decisions and follow-ups,25,4,4,2
+PM-007,2026-05-18,3,Project Manager,Executive status update,Summarize,Prepare weekly executive delivery summary and escalation points,36,5,5,2
+PM-008,2026-05-20,3,Project Manager,Risk and dependency tracker,Analyze,Identify unresolved dependencies from synthetic sprint updates,44,5,5,3
+HR-001,2026-05-04,1,HR Business Partner,Manager guidance draft,Draft,Draft manager guidance for a sensitive workplace conversation using generic policy,30,4,5,4
+HR-002,2026-05-05,1,HR Business Partner,Onboarding checklist,Plan,Create a role-specific onboarding checklist from generic team norms,34,5,4,2
+HR-003,2026-05-07,1,HR Business Partner,Policy Q&A response,Draft,Answer a synthetic policy question with caveats and escalation notes,26,4,4,4
+HR-004,2026-05-11,2,HR Business Partner,Manager guidance draft,Draft,Prepare talking points and follow-up actions for a manager scenario,32,4,5,4
+HR-005,2026-05-12,2,HR Business Partner,Onboarding checklist,Summarize,Summarize onboarding gaps and next actions for a new hire plan,31,5,4,2
+HR-006,2026-05-14,2,HR Business Partner,Policy Q&A response,Summarize,Create a safe response to a synthetic benefits policy question,24,4,4,4
+HR-007,2026-05-18,3,HR Business Partner,Manager guidance draft,Plan,Recommend approval-aware next steps for a manager coaching scenario,33,4,5,4
+HR-008,2026-05-19,3,HR Business Partner,Onboarding checklist,Draft,Draft a 30 60 90 day onboarding outline from generic role inputs,36,5,4,2
