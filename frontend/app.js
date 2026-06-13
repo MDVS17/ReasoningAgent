@@ -180,36 +180,39 @@ function renderFlow() {
 }
 
 function renderBlueprint(payload) {
-  const blueprint = payload.blueprint;
-  const opportunity = payload.opportunity;
+  const blueprint = payload.blueprint || payload.recommended_blueprint;
+  const opportunity = payload.opportunity || (payload.opportunity_scores || [])[0] || {};
   $("blueprintName").textContent = blueprint.agent_name;
   $("blueprintTarget").textContent = `Target user: ${blueprint.target_user}`;
-  $("artifactScore").textContent = `Score ${opportunity.syntrix_opportunity_score}`;
+  $("artifactScore").textContent = `Score ${opportunity.syntrix_opportunity_score ?? "--"}`;
   $("blueprintPurpose").textContent = blueprint.purpose;
-  $("blueprintRationale").textContent = opportunity.rationale;
+  $("blueprintRationale").textContent = opportunity.rationale || "Recommended by the Syntrix Master Agent from repeated workspace signals.";
   $("blueprintTriggers").innerHTML = blueprint.triggering_work_patterns.map((item) => `<li>${item}</li>`).join("");
   $("blueprintCapabilities").innerHTML = blueprint.suggested_tools_actions.map((item) => `<li>${item}</li>`).join("");
   $("blueprintGuardrails").innerHTML = blueprint.guardrails.map((item) => `<li>${item}</li>`).join("");
   $("approvalGates").innerHTML = blueprint.human_approval_points.map((item) => `<li>${item}</li>`).join("");
   $("blueprintImprovement").textContent = blueprint.continuous_improvement_recommendation;
-  $("riskBadge").textContent = `${payload.safety_review.risk_level} risk workflow`;
-  renderGovernanceGates();
+  $("riskBadge").textContent = `${payload.safety_review?.risk_level || "Controlled"} risk workflow`;
+  renderGovernanceGates(payload.governance_gates);
 }
 
-function renderGovernanceGates() {
-  const gates = [
-    "Human approval before external communication",
-    "Human approval before system changes",
-    "Source traceability required",
-    "Sensitive content flagged",
-    "No autonomous write actions without approval",
+function renderGovernanceGates(governanceGates) {
+  const gates = governanceGates || [
+    { gate: "Human approval before external communication" },
+    { gate: "Human approval before system changes" },
+    { gate: "Source traceability required" },
+    { gate: "Sensitive content flagged" },
+    { gate: "No autonomous write actions without approval" },
   ];
   $("governanceGates").innerHTML = gates
     .map(
       (gate) => `
         <div class="gate-item">
           <span></span>
-          <strong>${gate}</strong>
+          <div>
+            <strong>${gate.gate}</strong>
+            ${gate.reason ? `<small>${gate.reason}</small>` : ""}
+          </div>
         </div>
       `,
     )
@@ -282,6 +285,32 @@ function renderImprovement(rows) {
     .join("");
 }
 
+function renderReasoningEngine(data) {
+  const summary = data.master_agent_summary;
+  const trace = data.reasoning_trace || [];
+  if (!summary) {
+    return;
+  }
+
+  $("traceCount").textContent = `${trace.length} handoffs`;
+  $("masterRecommendation").textContent = summary.top_recommendation;
+  $("masterDecision").textContent = summary.orchestration_decision;
+  $("reasoningTrace").innerHTML = trace
+    .map(
+      (step) => `
+        <div class="trace-item">
+          <span>${step.step}</span>
+          <div>
+            <strong>${step.agent}</strong>
+            <p>${step.decision}</p>
+            <small>Handoff: ${step.handoff_to}</small>
+          </div>
+        </div>
+      `,
+    )
+    .join("");
+}
+
 function renderEvaluation(summary) {
   state.evaluation = summary;
 }
@@ -296,9 +325,14 @@ function renderAnalysis() {
   renderBars($("frequencyChart"), data.task_frequency, "count", maxFrequency);
 
   const maxScore = 100;
-  renderBars($("scoreChart"), data.opportunities, "syntrix_opportunity_score", maxScore);
+  renderBars($("scoreChart"), data.opportunity_scores || data.opportunities, "syntrix_opportunity_score", maxScore);
   renderFlow(data.reasoning_flow);
   renderImprovement(data.week_comparison);
+  if (data.learning_loop_recommendation) {
+    $("confidenceLift").textContent = `+${data.learning_loop_recommendation.confidence_lift} pts`;
+    $("learningCapability").textContent = data.learning_loop_recommendation.new_capability;
+  }
+  renderReasoningEngine(data);
 }
 
 async function loadProfiles() {
@@ -317,15 +351,14 @@ async function loadProfiles() {
 
 async function refreshDemo() {
   state.profile = $("profileSelect").value || "All roles";
-  const [analysisPayload, blueprintPayload, iqPayload, evalPayload] = await Promise.all([
+  const [analysisPayload, iqPayload, evalPayload] = await Promise.all([
     api("/api/analyze", { method: "POST", body: JSON.stringify({ profile: state.profile }) }),
-    api("/api/blueprint", { method: "POST", body: JSON.stringify({ profile: state.profile }) }),
     api("/api/iq/status"),
     api("/api/evaluation/summary"),
   ]);
 
   state.analysis = analysisPayload.data;
-  state.blueprint = blueprintPayload.data;
+  state.blueprint = analysisPayload.data;
   state.iq = iqPayload.data;
   state.evaluation = evalPayload.data;
 

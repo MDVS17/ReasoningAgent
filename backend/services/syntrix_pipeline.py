@@ -5,7 +5,14 @@ from typing import Any
 
 import pandas as pd
 
-from agents import generate_blueprint, load_interactions, load_profiles, review_blueprint, score_opportunities
+from agents import (
+    generate_blueprint,
+    load_interactions,
+    load_profiles,
+    review_blueprint,
+    run_reasoning_engine,
+    score_opportunities,
+)
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 
@@ -32,10 +39,10 @@ def get_interactions(profile: str = "All roles") -> list[dict[str, Any]]:
 def analyze(profile: str = "All roles") -> dict[str, Any]:
     interactions = load_interactions()
     filtered = interactions if profile == "All roles" else interactions[interactions["profile"] == profile]
-    opportunities = score_opportunities(interactions, profile)
     week_comparison = pd.read_csv(BASE_DIR / "synthetic_data" / "week_comparison.csv")
     if profile != "All roles":
         week_comparison = week_comparison[week_comparison["profile"] == profile]
+    engine_result = run_reasoning_engine(interactions, week_comparison, profile)
 
     task_frequency = (
         filtered.groupby(["profile", "workflow"], as_index=False)
@@ -44,7 +51,7 @@ def analyze(profile: str = "All roles") -> dict[str, Any]:
         .sort_values("count", ascending=False)
     )
 
-    opportunity_records = [item.model_dump(by_alias=True) for item in opportunities]
+    opportunity_records = engine_result["opportunity_scores"]
     top = opportunity_records[0] if opportunity_records else None
 
     return {
@@ -58,14 +65,18 @@ def analyze(profile: str = "All roles") -> dict[str, Any]:
         "interactions": _records(filtered),
         "task_frequency": _records(task_frequency),
         "opportunities": opportunity_records,
+        "opportunity_scores": opportunity_records,
         "week_comparison": _records(week_comparison),
         "reasoning_flow": [
+            "Master Agent",
+            "Signal Discovery Agent",
             "Pattern Discovery Agent",
-            "Opportunity Scoring Agent",
-            "Blueprint Generation Agent",
-            "Safety Review Agent",
-            "Continuous Improvement Agent",
+            "Pattern Scoring Agent",
+            "Blueprint Architect Agent",
+            "Safety Governance Agent",
+            "Learning Loop Agent",
         ],
+        **engine_result,
     }
 
 

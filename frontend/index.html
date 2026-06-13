@@ -127,6 +127,20 @@
           <div id="reasoningFlow" class="flow-row"></div>
           <aside id="agentDetailPanel" class="agent-detail-panel" aria-live="polite"></aside>
         </div>
+        <div class="reasoning-output-grid">
+          <article class="trace-panel">
+            <div class="mini-heading">
+              <p class="eyebrow">Reasoning Trace</p>
+              <span id="traceCount" class="live-pill">0 handoffs</span>
+            </div>
+            <div id="reasoningTrace" class="trace-list"></div>
+          </article>
+          <article class="trace-panel master-output">
+            <p class="eyebrow">Master Agent Output</p>
+            <h3 id="masterRecommendation">Awaiting workspace signals</h3>
+            <p id="masterDecision"></p>
+          </article>
+        </div>
       </section>
 
       <section class="section-grid blueprint-grid">

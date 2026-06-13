@@ -21,12 +21,12 @@ def review_blueprint(blueprint: AgentBlueprint) -> SafetyReview:
 
     sensitive = any("HR" in item or "employee" in item.lower() for item in blueprint.human_approval_points)
     return SafetyReview(
-        decision="Approved for synthetic local demo",
+        decision="Governance gates required",
         risk_level="Medium" if sensitive else "Low",
         checks_passed=checks,
         required_controls=controls,
         reviewer_notes=(
-            "The blueprint is suitable for hackathon demonstration because it produces advisory "
-            "workflow guidance from synthetic data and keeps consequential actions behind approval."
+            "The blueprint produces advisory workflow guidance from synthetic data and keeps "
+            "consequential actions behind human approval."
         ),
     )

@@ -12,6 +12,16 @@ Companies are buying Copilot, but most users do not know how to convert their da
 
 Syntrix is built as a multi-agent reasoning system, not a chatbot. The first version runs locally with synthetic data only and demonstrates how an enterprise could move from scattered AI usage to governed, personalized agents.
 
+## Syntrix Reasoning Engine
+
+Syntrix Reasoning Engine v1 is a deterministic local multi-agent pipeline that turns synthetic workspace signals into governed agent recommendations. The flow is:
+
+```text
+Workspace signals -> Master Agent -> Specialist agents -> Reasoning trace -> Opportunity scoring -> Agent blueprint -> Governance gates -> Learning loop recommendation
+```
+
+The engine uses six product-facing agents: Master Agent, Signal Discovery Agent, Pattern Scoring Agent, Blueprint Architect Agent, Safety Governance Agent, and Learning Loop Agent. `POST /api/analyze` returns one complete JSON response with `master_agent_summary`, `reasoning_trace`, `opportunity_scores`, `recommended_blueprint`, `governance_gates`, and `learning_loop_recommendation`.
+
 ## What the Demo Shows
 
 - A polished Streamlit product narrative for Syntrix
