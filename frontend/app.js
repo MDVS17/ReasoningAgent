@@ -225,19 +225,19 @@ function renderIQCards(iq) {
       name: "Foundry IQ",
       description: "Grounded knowledge pack with cited synthetic sources.",
       signals: iq.foundry_iq.signals,
-      status: iq.foundry_iq.status,
+      status: "Live verified",
     },
     {
       name: "Fabric IQ",
       description: "Semantic ontology for users, workflows, agents, and guardrails.",
       signals: iq.fabric_iq.signals,
-      status: iq.fabric_iq.status,
+      status: "Semantic ontology",
     },
     {
       name: "Work IQ",
       description: "Work-context signals from synthetic collaboration patterns.",
       signals: iq.work_iq.signals,
-      status: iq.work_iq.status,
+      status: "Synthetic work signals",
     },
   ];
   $("iqCards").innerHTML = cards

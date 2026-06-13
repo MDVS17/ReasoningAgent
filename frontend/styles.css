@@ -980,6 +980,13 @@ ul {
   gap: 18px;
 }
 
+.iq-verification-note {
+  max-width: 720px;
+  margin: -8px 0 22px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .iq-card {
   border: 1px solid var(--line);
   border-radius: 18px;

@@ -62,9 +62,23 @@ def get_foundry_iq_status() -> dict[str, Any]:
     sources = _read_markdown_sources()
     return {
         "name": "Foundry IQ",
-        "status": "local_demo_ready",
-        "mode": "local_demo",
+        "status": "live_verified",
+        "mode": "local_demo_with_live_verification",
         "description": "Grounded knowledge pack with cited synthetic sources for blueprint and governance reasoning.",
+        "live_verification": {
+            "verified": True,
+            "provider": "Microsoft Foundry",
+            "project": "syntrix-project",
+            "search_resource": "syntrix-project-srch",
+            "knowledge_base": "kb-syntrix-agent-knowledge",
+            "knowledge_source": "syntrix-governance-docs",
+            "resource_group": "rg-mdvs2-1164",
+            "region": "Canada East",
+            "pricing_tier": "Basic",
+            "data_used": "Synthetic markdown documents only",
+            "proof_screenshot": "docs/assets/foundry-iq-live-proof.png",
+            "note": "No Azure credentials are required or stored by the local demo.",
+        },
         "document_count": len(sources),
         "sources": [
             {"source_name": source["source_name"], "source_path": source["source_path"]}
@@ -72,7 +86,7 @@ def get_foundry_iq_status() -> dict[str, Any]:
         ],
         "signals": [
             {"label": "Approved knowledge sources", "value": len(sources)},
-            {"label": "Grounded retrieval", "value": "ready"},
+            {"label": "Azure Foundry verification", "value": "live verified"},
             {"label": "Source citations", "value": "enabled"},
         ],
     }

@@ -83,7 +83,7 @@ The engine is deterministic, local, and explainable. It does not call paid APIs 
 
 ## Microsoft IQ Layer
 
-Syntrix IQ Layer v1 shows Microsoft IQ-ready architecture with local, synthetic assets.
+Syntrix IQ Layer v1 shows Microsoft IQ-ready architecture with a live-verified Foundry IQ knowledge base and local synthetic architecture layers for Fabric IQ and Work IQ.
 
 ### Foundry IQ-ready Knowledge Pack
 
@@ -95,6 +95,36 @@ Syntrix IQ Layer v1 shows Microsoft IQ-ready architecture with local, synthetic 
 - Safe agent deployment checklist
 - Blueprint quality standards
 - Agent readiness rubric
+
+### Live Foundry IQ Verification
+
+Syntrix has been live-verified in Microsoft Foundry using the synthetic Syntrix knowledge pack. A real Foundry IQ knowledge base was created and tested in Azure Foundry, and the Foundry agent successfully answered from the uploaded synthetic governance documents.
+
+Non-secret verification details:
+
+- Foundry project: `syntrix-project`
+- Foundry IQ / Azure AI Search resource: `syntrix-project-srch`
+- Knowledge base: `kb-syntrix-agent-knowledge`
+- Knowledge source: `syntrix-governance-docs`
+- Resource group: `rg-mdvs2-1164`
+- Region: `Canada East`
+- Pricing tier: `Basic`
+- Data used: synthetic markdown documents only
+- Proof screenshot: `docs/assets/foundry-iq-live-proof.png`
+
+Safety boundary:
+
+- No company data was uploaded.
+- No real emails were uploaded.
+- No real customer, employee, or confidential data was uploaded.
+- No secrets, keys, or connection strings are stored in this public repo.
+- The local demo does not require Azure credentials.
+
+IQ layer precision:
+
+- **Foundry IQ:** live verified in Azure Foundry with synthetic governance documents.
+- **Fabric IQ:** represented as a semantic ontology layer in `knowledge/fabric_ontology/`.
+- **Work IQ:** represented as a synthetic work-signal layer in `knowledge/work_iq_signals/`.
 
 ### Fabric IQ-style Ontology
 
