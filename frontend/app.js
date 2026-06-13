@@ -271,9 +271,11 @@ function renderImprovement(rows) {
       const weekThree = Math.max(0, Math.min(94, Number(row.week_3_avg_score)));
       return `
         <div class="line-row">
-          <span title="${row.workflow}">${truncate(row.workflow, 28)}</span>
+          <div class="line-row-top">
+            <span title="${row.workflow}">${truncate(row.workflow, 28)}</span>
+            <strong>${row.week_1_avg_score} -> ${row.week_3_avg_score}</strong>
+          </div>
           <div class="score-line" style="--week-one:${weekOne}%; --week-three:${weekThree}%"></div>
-          <strong>${row.week_1_avg_score} -> ${row.week_3_avg_score}</strong>
         </div>
       `;
     })

@@ -317,8 +317,11 @@ h3 {
 .core-node {
   width: 202px;
   aspect-ratio: 1;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   text-align: center;
   border-radius: 50%;
   padding: 24px;
@@ -337,6 +340,12 @@ h3 {
   line-height: 1;
   font-weight: 900;
   max-width: 120px;
+}
+
+.core-node small {
+  display: block;
+  line-height: 1;
+  margin: 0;
 }
 
 .signal-chip {
@@ -411,8 +420,20 @@ main {
 .story {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
-  gap: 28px;
-  align-items: start;
+  gap: clamp(30px, 5vw, 58px);
+  align-items: center;
+}
+
+.story h2 {
+  margin-bottom: 0;
+}
+
+.story > p {
+  align-self: center;
+  max-width: 660px;
+  margin-bottom: 0;
+  font-size: clamp(1.08rem, 1.3vw, 1.22rem);
+  line-height: 1.72;
 }
 
 .section-grid {
@@ -450,6 +471,7 @@ label {
 select {
   width: 100%;
   appearance: none;
+  background-color: #151812;
   background:
     linear-gradient(135deg, rgba(124, 247, 178, 0.16), rgba(245, 201, 107, 0.1)),
     rgba(255, 255, 255, 0.08);
@@ -472,6 +494,23 @@ select {
     6px 6px,
     6px 6px;
   background-repeat: no-repeat;
+}
+
+select:focus {
+  outline: 2px solid rgba(124, 247, 178, 0.45);
+  outline-offset: 3px;
+}
+
+select option {
+  background: #f4f3ee;
+  color: #11130f;
+  font-weight: 700;
+}
+
+select option:checked,
+select option:hover {
+  background: #dff5df;
+  color: #11130f;
 }
 
 .workspace-context {
@@ -899,23 +938,25 @@ ul {
 }
 
 .improvement-grid {
-  grid-template-columns: minmax(0, 1fr) 430px;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
+  gap: 28px;
 }
 
 .wide-card {
-  min-height: 500px;
+  min-height: auto;
+  padding: clamp(24px, 3vw, 34px);
 }
 
 .learning-loop {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin: 24px 0;
+  gap: 18px;
+  margin: 30px 0;
 }
 
 .learning-step {
-  min-height: 190px;
-  padding: 18px;
+  min-height: 176px;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
@@ -939,7 +980,8 @@ ul {
 
 .learning-step p {
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.62;
+  font-size: 0.95rem;
 }
 
 .learning-step.featured {
@@ -969,21 +1011,47 @@ ul {
 }
 
 .learning-metrics strong {
-  font-size: 1.25rem;
+  display: block;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.25;
 }
 
 .line-chart {
   display: grid;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 14px;
+  margin-top: 24px;
 }
 
 .line-row {
   display: grid;
-  grid-template-columns: minmax(130px, 1.2fr) minmax(220px, 2fr) 72px;
-  gap: 12px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid rgba(244, 243, 238, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
   color: var(--muted);
+}
+
+.line-row-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.line-row-top span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-row-top strong {
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .score-line {
@@ -991,6 +1059,14 @@ ul {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.evidence-title {
+  font-size: clamp(1.35rem, 2vw, 1.95rem);
+  line-height: 1.08;
+  white-space: nowrap;
 }
 
 .score-line::before,
