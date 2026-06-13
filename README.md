@@ -106,6 +106,17 @@ Syntrix aligns to enterprise AI adoption priorities:
 - **Trust:** avoids real company data in the demo and makes assumptions visible.
 - **Continuous improvement:** compares usage patterns over time to refine agent design.
 
+## Microsoft IQ Integration
+
+Syntrix IQ Layer v1 is local and demo-safe. It is designed to show how Syntrix can align with Microsoft IQ concepts without requiring live Azure credentials.
+
+- **Foundry IQ-ready knowledge pack:** synthetic markdown sources in `knowledge/foundry_iq_pack/` provide approved grounding material for blueprint quality, governance, adoption patterns, and safe deployment.
+- **Fabric IQ-style ontology:** `knowledge/fabric_ontology/syntrix_ontology.json` models users, work signals, work patterns, opportunities, blueprints, governance gates, evaluation cases, and learning-loop updates.
+- **Work IQ-style synthetic signals:** `knowledge/work_iq_signals/work_context_signals.json` models synthetic collaboration patterns, recurring tasks, output preferences, stakeholder context, and approval sensitivity.
+- **Future connection path:** the local services can later be replaced or extended with real Foundry IQ, Fabric, and Microsoft 365 work-context integrations after tenant boundaries, consent, security, and data governance are approved.
+
+No real company data is used. No paid APIs or Azure credentials are required for the local demo.
+
 ## Internal Labels
 
 - Syntrix Reasoning Engine

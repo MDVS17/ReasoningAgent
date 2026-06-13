@@ -1,0 +1,40 @@
+{
+  "name": "Syntrix Work IQ-style Synthetic Signals",
+  "mode": "local_demo",
+  "description": "Synthetic work-context signals used to enrich Syntrix reasoning without real collaboration data.",
+  "signals": {
+    "frequent_apps": ["Teams", "Outlook", "Word", "PowerPoint", "Planner"],
+    "meeting_load": {
+      "Marketing Manager": "High launch and stakeholder review load",
+      "Project Manager": "High status, dependency, and escalation load",
+      "HR Business Partner": "Moderate advisory and policy support load"
+    },
+    "collaboration_patterns": [
+      "Cross-functional follow-up requests",
+      "Recurring summary and status drafting",
+      "Stakeholder-specific adaptation of the same core information"
+    ],
+    "recurring_tasks": [
+      "Draft structured updates",
+      "Summarize risks and owners",
+      "Create follow-up plans",
+      "Adapt source material for different audiences"
+    ],
+    "output_preferences": {
+      "Marketing Manager": ["launch brief", "campaign narrative", "content plan"],
+      "Project Manager": ["executive status", "risk tracker", "dependency summary"],
+      "HR Business Partner": ["manager guidance", "onboarding checklist", "policy response"]
+    },
+    "stakeholder_context": [
+      "Executives need concise risk and decision summaries",
+      "Managers need actionable guidance and clear next steps",
+      "Teams need owners, dates, and dependencies"
+    ],
+    "approval_sensitivity": {
+      "external_communication": "human approval required",
+      "system_changes": "human approval required",
+      "employee_impacting_guidance": "human approval required",
+      "customer_impacting_guidance": "human approval required"
+    }
+  }
+}

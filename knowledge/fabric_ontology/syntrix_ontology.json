@@ -1,0 +1,48 @@
+{
+  "name": "Syntrix Fabric IQ-style Ontology",
+  "mode": "local_demo",
+  "description": "Synthetic semantic model for users, work signals, agent opportunities, blueprints, governance, evaluation, and learning updates.",
+  "entities": {
+    "UserProfile": {
+      "description": "Synthetic role or workspace view analyzed by Syntrix.",
+      "attributes": ["profile_name", "workspace_view", "responsibilities"]
+    },
+    "WorkSignal": {
+      "description": "Synthetic Copilot-style interaction or work-context signal.",
+      "attributes": ["signal_id", "profile", "workflow", "prompt_type", "estimated_time_saved_minutes"]
+    },
+    "WorkPattern": {
+      "description": "Repeated workflow revealed by multiple work signals.",
+      "attributes": ["workflow", "frequency", "avg_repetition", "avg_business_value", "avg_risk"]
+    },
+    "AgentOpportunity": {
+      "description": "Scored opportunity to design a personalized agent.",
+      "attributes": ["workflow", "syntrix_opportunity_score", "rationale"]
+    },
+    "AgentBlueprint": {
+      "description": "Generated governed agent design artifact.",
+      "attributes": ["agent_name", "purpose", "target_user", "capabilities", "guardrails"]
+    },
+    "GovernanceGate": {
+      "description": "Control required before sensitive or write-capable actions.",
+      "attributes": ["gate", "status", "reason", "review_risk"]
+    },
+    "EvaluationCase": {
+      "description": "Test case used to validate a blueprint before deployment.",
+      "attributes": ["test_name", "expected_behavior", "risk_area"]
+    },
+    "LearningLoopUpdate": {
+      "description": "Controlled recommendation to improve a blueprint after observing new signals.",
+      "attributes": ["current_version", "recommended_version", "new_signal", "confidence_lift"]
+    }
+  },
+  "relationships": [
+    {"from": "UserProfile", "relationship": "produces", "to": "WorkSignal"},
+    {"from": "WorkSignal", "relationship": "reveals", "to": "WorkPattern"},
+    {"from": "WorkPattern", "relationship": "creates", "to": "AgentOpportunity"},
+    {"from": "AgentOpportunity", "relationship": "generates", "to": "AgentBlueprint"},
+    {"from": "AgentBlueprint", "relationship": "requires", "to": "GovernanceGate"},
+    {"from": "EvaluationCase", "relationship": "validates", "to": "AgentBlueprint"},
+    {"from": "LearningLoopUpdate", "relationship": "improves", "to": "AgentBlueprint"}
+  ]
+}

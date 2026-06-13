@@ -223,18 +223,21 @@ function renderIQCards(iq) {
   const cards = [
     {
       name: "Foundry IQ",
-      description: "Grounded knowledge retrieval for approved sources.",
+      description: "Grounded knowledge pack with cited synthetic sources.",
       signals: iq.foundry_iq.signals,
+      status: iq.foundry_iq.status,
     },
     {
       name: "Fabric IQ",
-      description: "Semantic model for users, workflows, agents, and guardrails.",
+      description: "Semantic ontology for users, workflows, agents, and guardrails.",
       signals: iq.fabric_iq.signals,
+      status: iq.fabric_iq.status,
     },
     {
       name: "Work IQ",
-      description: "Work-context signals from collaboration patterns and user activity.",
+      description: "Work-context signals from synthetic collaboration patterns.",
       signals: iq.work_iq.signals,
+      status: iq.work_iq.status,
     },
   ];
   $("iqCards").innerHTML = cards
@@ -249,7 +252,7 @@ function renderIQCards(iq) {
         <article class="iq-card">
           <div class="iq-card-heading">
             <strong>${card.name}</strong>
-            <span>demo mode</span>
+            <span>${card.status || "local demo"}</span>
           </div>
           <h3>Ready layer</h3>
           <p>${card.description}</p>
@@ -257,6 +260,29 @@ function renderIQCards(iq) {
         </article>
       `;
     })
+    .join("");
+}
+
+function renderIQEvidence(data) {
+  const evidence = data.iq_evidence || {};
+  const citations = data.recommended_blueprint?.citations || evidence.citations || [];
+  const items = evidence.evidence || [];
+  $("citationCount").textContent = `${citations.length} citations`;
+  $("iqEvidenceSummary").textContent =
+    data.recommended_blueprint?.evidence_summary ||
+    evidence.evidence_summary ||
+    "Blueprint evidence will appear after workspace signals are analyzed.";
+  $("iqEvidenceList").innerHTML = items
+    .slice(0, 5)
+    .map(
+      (item) => `
+        <div class="citation-item">
+          <span>${item.layer}</span>
+          <strong>${item.source_name}</strong>
+          <p>${item.snippet}</p>
+        </div>
+      `,
+    )
     .join("");
 }
 
@@ -333,6 +359,7 @@ function renderAnalysis() {
     $("learningCapability").textContent = data.learning_loop_recommendation.new_capability;
   }
   renderReasoningEngine(data);
+  renderIQEvidence(data);
 }
 
 async function loadProfiles() {

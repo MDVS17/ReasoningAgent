@@ -14,6 +14,12 @@ class BlueprintRequest(BaseModel):
     workflow: str | None = None
 
 
+class IQRetrieveRequest(BaseModel):
+    query: str = "agent blueprint governance"
+    profile: str = "All roles"
+    workflow: str | None = None
+
+
 class HealthResponse(BaseModel):
     status: Literal["ok"]
     product: str

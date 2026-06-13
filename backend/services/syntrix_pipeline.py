@@ -13,6 +13,7 @@ from agents import (
     run_reasoning_engine,
     score_opportunities,
 )
+from backend.services.iq_layer_service import get_iq_evidence
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 
@@ -43,6 +44,18 @@ def analyze(profile: str = "All roles") -> dict[str, Any]:
     if profile != "All roles":
         week_comparison = week_comparison[week_comparison["profile"] == profile]
     engine_result = run_reasoning_engine(interactions, week_comparison, profile)
+    selected_workflow = None
+    if engine_result.get("opportunity_scores"):
+        selected_workflow = engine_result["opportunity_scores"][0]["workflow"]
+    iq_evidence = get_iq_evidence(profile=profile, workflow=selected_workflow)
+    if engine_result.get("recommended_blueprint"):
+        engine_result["recommended_blueprint"] = {
+            **engine_result["recommended_blueprint"],
+            "grounded_sources": iq_evidence["citations"],
+            "evidence_summary": iq_evidence["evidence_summary"],
+            "iq_alignment": iq_evidence["iq_alignment"],
+            "citations": iq_evidence["citations"],
+        }
 
     task_frequency = (
         filtered.groupby(["profile", "workflow"], as_index=False)
@@ -76,6 +89,7 @@ def analyze(profile: str = "All roles") -> dict[str, Any]:
             "Safety Governance Agent",
             "Learning Loop Agent",
         ],
+        "iq_evidence": iq_evidence,
         **engine_result,
     }
 
