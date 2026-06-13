@@ -72,6 +72,18 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+## Run the Cinematic FastAPI Demo
+
+```bash
+.venv\Scripts\activate
+uvicorn backend.main:app --reload --port 8000
+```
+
+Open:
+
+- Product demo: `http://localhost:8000`
+- API docs: `http://localhost:8000/docs`
+
 No paid APIs are required. No real secrets are needed. The app uses synthetic data only.
 
 ## Microsoft IQ Alignment

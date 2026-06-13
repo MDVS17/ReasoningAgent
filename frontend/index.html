@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Syntrix</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <header class="hero">
+      <nav class="nav">
+        <div class="brand-mark">S</div>
+        <div class="nav-copy">
+          <strong>Syntrix</strong>
+          <span>Reasoning Agents Hackathon</span>
+        </div>
+        <a class="docs-link" href="/docs">API Docs</a>
+      </nav>
+
+      <section class="hero-stage">
+        <div class="hero-copy">
+          <p class="eyebrow">Syntrix Reasoning Engine</p>
+          <h1>Syntrix</h1>
+          <p class="tagline">From scattered Copilot usage to personalized AI agents</p>
+          <p class="hero-text">
+            Syntrix watches synthetic Copilot-style work patterns, discovers repeated workflows,
+            scores agent opportunities, and generates safe personalized agent blueprints.
+          </p>
+          <div class="hero-actions">
+            <a href="#analysis" class="primary-action">Explore Demo</a>
+            <a href="/api/health" class="secondary-action">Health Check</a>
+          </div>
+        </div>
+        <div class="signal-core" aria-label="Animated synthetic work-pattern signal field">
+          <div class="orbital orbital-one"></div>
+          <div class="orbital orbital-two"></div>
+          <div class="orbital orbital-three"></div>
+          <div class="core-node">
+            <span>AI</span>
+            <small>discovers agents</small>
+          </div>
+          <div class="signal-chip chip-a">Patterns</div>
+          <div class="signal-chip chip-b">Scores</div>
+          <div class="signal-chip chip-c">Blueprints</div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="story section-band">
+        <div>
+          <p class="eyebrow">Problem Story</p>
+          <h2>Companies bought Copilot. Most teams still have to invent their own agents.</h2>
+        </div>
+        <p>
+          Syntrix flips the workflow. Users do not start with a blank agent builder.
+          The system studies synthetic work interactions, identifies where repeated effort already exists,
+          and recommends governed agents that match the user's actual work patterns.
+        </p>
+      </section>
+
+      <section id="analysis" class="section-grid">
+        <aside class="control-panel">
+          <p class="eyebrow">Synthetic Profile</p>
+          <label for="profileSelect">Analyze role</label>
+          <select id="profileSelect"></select>
+          <div class="boundary-note">
+            Synthetic data only. No real emails, real customers, real employees, or confidential content.
+          </div>
+          <div class="metric-stack">
+            <div><span id="metricInteractions">--</span><small>Interactions</small></div>
+            <div><span id="metricWorkflows">--</span><small>Workflows</small></div>
+            <div><span id="metricTopScore">--</span><small>Top Score</small></div>
+          </div>
+        </aside>
+
+        <section class="analysis-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Synthetic Copilot Signals</p>
+              <h2>Repeated work patterns become agent opportunities.</h2>
+            </div>
+            <span class="live-pill">Live local API</span>
+          </div>
+          <div class="chart-pair">
+            <div class="chart-card">
+              <h3>Task Frequency</h3>
+              <div id="frequencyChart" class="bar-chart"></div>
+            </div>
+            <div class="chart-card">
+              <h3>Syntrix Opportunity Score</h3>
+              <div id="scoreChart" class="bar-chart"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="section-band flow-section">
+        <div>
+          <p class="eyebrow">Multi-Agent Reasoning Flow</p>
+          <h2>Five agents turn usage traces into governed action.</h2>
+        </div>
+        <div id="reasoningFlow" class="flow-row"></div>
+      </section>
+
+      <section class="section-grid blueprint-grid">
+        <section class="blueprint-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Syntrix Agent Blueprint</p>
+              <h2 id="blueprintName">Generating blueprint...</h2>
+            </div>
+            <span id="blueprintTarget" class="live-pill"></span>
+          </div>
+          <p id="blueprintPurpose" class="purpose-copy"></p>
+          <div class="blueprint-columns">
+            <div>
+              <h3>Instructions</h3>
+              <ul id="blueprintInstructions"></ul>
+            </div>
+            <div>
+              <h3>Guardrails</h3>
+              <ul id="blueprintGuardrails"></ul>
+            </div>
+          </div>
+        </section>
+
+        <aside class="governance-panel">
+          <p class="eyebrow">Safety & Governance</p>
+          <h2 id="safetyDecision">Review pending</h2>
+          <div id="riskBadge" class="risk-badge">--</div>
+          <p id="safetyNotes"></p>
+          <h3>Approval Points</h3>
+          <ul id="approvalPoints"></ul>
+        </aside>
+      </section>
+
+      <section class="section-band">
+        <div>
+          <p class="eyebrow">Microsoft IQ Layer</p>
+          <h2>IQ-aligned signals without real enterprise data.</h2>
+        </div>
+        <div id="iqCards" class="iq-grid"></div>
+      </section>
+
+      <section class="section-grid improvement-grid">
+        <section class="chart-card wide-card">
+          <p class="eyebrow">Syntrix Continuous Improvement Loop</p>
+          <h2>Week 1 vs Week 3 signal lift</h2>
+          <div id="improvementChart" class="line-chart"></div>
+        </section>
+        <aside class="evaluation-panel">
+          <p class="eyebrow">Evaluation Summary</p>
+          <h2 id="evalStatus">Loading...</h2>
+          <div id="evalList"></div>
+        </aside>
+      </section>
+
+      <section class="finale">
+        <p class="eyebrow">Final Demo Narrative</p>
+        <h2>Do not ask users to design agents. Let AI discover the agents they already need.</h2>
+        <p>
+          Syntrix gives judges a clear enterprise story: synthetic signals in, multi-agent reasoning in the middle,
+          safe personalized blueprints out, and a continuous improvement loop that gets smarter over time.
+        </p>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

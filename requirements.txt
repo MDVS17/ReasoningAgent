@@ -3,3 +3,6 @@ pandas
 plotly
 pydantic
 python-dotenv
+fastapi
+uvicorn
+jinja2

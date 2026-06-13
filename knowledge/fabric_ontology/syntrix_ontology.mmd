@@ -1,0 +1,7 @@
+erDiagram
+    SyntheticUserProfile ||--o{ CopilotStyleInteraction : produces
+    CopilotStyleInteraction }o--|| WorkflowPattern : clusters_into
+    WorkflowPattern ||--o{ AgentOpportunity : creates
+    AgentOpportunity ||--|| SyntrixAgentBlueprint : generates
+    SyntrixAgentBlueprint ||--o{ GovernanceControl : requires
+    SyntrixAgentBlueprint ||--o{ EvaluationResult : validates

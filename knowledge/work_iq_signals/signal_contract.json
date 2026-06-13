@@ -1,0 +1,19 @@
+{
+  "mode": "synthetic",
+  "signals": [
+    "interaction_frequency",
+    "prompt_type",
+    "estimated_time_saved_minutes",
+    "repetition_score",
+    "business_value_score",
+    "risk_score",
+    "week_over_week_improvement"
+  ],
+  "blocked_inputs": [
+    "real_email",
+    "real_employee_record",
+    "real_customer_data",
+    "confidential_document",
+    "production_secret"
+  ]
+}
