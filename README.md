@@ -1,91 +1,166 @@
 # Syntrix
 
-**Syntrix — From scattered Copilot usage to personalized AI agents.**
+**From scattered Copilot usage to personalized AI agents.**
 
-Companies are buying Copilot, but most users do not know how to convert their daily work patterns into useful AI agents. Syntrix discovers the agents people already need by analyzing synthetic Copilot-style interactions, finding repeated workflows, scoring automation opportunities, and generating safe personalized agent blueprints.
+Syntrix is a hackathon-grade reasoning-agent product demo for companies that have adopted Copilot but still do not know which AI agents their teams actually need.
 
-> Winning thesis: do not ask users to design agents. Let AI discover the agents they already need.
+> Product thesis: do not ask users to design agents. Let AI discover the agents they already need.
 
-## Hackathon Track
+## Problem Statement
 
-**Reasoning Agents**
+Companies are buying AI assistants, but most users do not naturally translate their daily work patterns into safe, useful, governed agents. Their Copilot usage is scattered across prompts, drafts, summaries, meetings, status updates, and follow-ups. The opportunity is hidden in the pattern, not in any single prompt.
 
-Syntrix is built as a multi-agent reasoning system, not a chatbot. The first version runs locally with synthetic data only and demonstrates how an enterprise could move from scattered AI usage to governed, personalized agents.
+Syntrix solves this by analyzing synthetic Copilot-style work signals, detecting repeated effort, scoring agent opportunities, generating governed agent blueprints, and recommending controlled improvements over time.
 
-## Syntrix Reasoning Engine
+## Solution Overview
 
-Syntrix Reasoning Engine v1 is a deterministic local multi-agent pipeline that turns synthetic workspace signals into governed agent recommendations. The flow is:
+Syntrix is a deterministic local multi-agent reasoning system with two demo surfaces:
+
+- A cinematic FastAPI + vanilla frontend demo at `http://localhost:8000`.
+- A Streamlit backup demo in `app.py`.
+
+The primary demo flow is:
 
 ```text
-Workspace signals -> Master Agent -> Specialist agents -> Reasoning trace -> Opportunity scoring -> Agent blueprint -> Governance gates -> Learning loop recommendation
+Workspace signals
+-> Master Agent
+-> Specialist agents
+-> Reasoning trace
+-> Opportunity scoring
+-> Agent blueprint
+-> Governance gates
+-> Learning loop recommendation
 ```
 
-The engine uses six product-facing agents: Master Agent, Signal Discovery Agent, Pattern Scoring Agent, Blueprint Architect Agent, Safety Governance Agent, and Learning Loop Agent. `POST /api/analyze` returns one complete JSON response with `master_agent_summary`, `reasoning_trace`, `opportunity_scores`, `recommended_blueprint`, `governance_gates`, and `learning_loop_recommendation`.
+## Why It Matters
 
-## What the Demo Shows
-
-- A polished Streamlit product narrative for Syntrix
-- Sidebar role selector for Marketing Manager, Project Manager, and HR Business Partner
-- Synthetic Copilot-style work interaction logs
-- Task frequency and Syntrix Opportunity Score charts
-- Multi-agent reasoning flow
-- Recommended agent opportunities
-- Generated Syntrix Agent Blueprint
-- Safety and governance review
-- Syntrix Continuous Improvement Loop comparing Week 1 vs Week 3
+Syntrix moves enterprise AI adoption from "users should invent agents" to "AI discovers agent opportunities from how work already happens." That matters because useful agents need context, repetition, governance, evaluation, and a path for improvement. Syntrix demonstrates that full loop with synthetic data only.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-    A[Synthetic Copilot-style logs] --> B[Pattern Discovery Agent]
-    B --> C[Opportunity Scoring Agent]
-    C --> D[Blueprint Generation Agent]
-    D --> E[Safety Review Agent]
-    E --> F[Syntrix Agent Blueprint]
-    F --> G[Syntrix Continuous Improvement Loop]
+    A[Synthetic workspace signals] --> B[Syntrix Reasoning Engine]
+    B --> C[Master Agent]
+    C --> D[Signal Discovery Agent]
+    C --> E[Pattern Scoring Agent]
+    C --> F[Blueprint Architect Agent]
+    C --> G[Safety Governance Agent]
+    C --> H[Learning Loop Agent]
+    D --> I[Repeated work patterns]
+    E --> J[Syntrix Opportunity Score]
+    F --> K[Syntrix Agent Blueprint]
+    G --> L[Governance Gates]
+    H --> M[Controlled v1.1 recommendation]
+    N[Syntrix IQ Layer] --> F
+    N --> G
 ```
 
-## Project Structure
+## Multi-Agent System
 
-```text
-ReasoningAgent/
-├── app.py
-├── agents/
-│   ├── blueprint_generator.py
-│   ├── data_loader.py
-│   ├── models.py
-│   ├── opportunity_scorer.py
-│   └── safety_reviewer.py
-├── synthetic_data/
-│   ├── copilot_interactions.csv
-│   ├── profiles.csv
-│   └── week_comparison.csv
-├── diagrams/
-│   ├── architecture.mmd
-│   └── reasoning_flow.mmd
-├── evals/
-│   ├── scoring_rubric.md
-│   └── test_cases.md
-├── outputs/
-│   └── sample_blueprint.md
-└── .agents/skills/
-    └── syntrix-demo.md
-```
+Syntrix uses six product-facing agents:
 
-## Run Locally
+- **Master Agent:** orchestrates the end-to-end reasoning loop.
+- **Signal Discovery Agent:** detects repeated workflows from synthetic work signals.
+- **Pattern Scoring Agent:** ranks opportunities using the Syntrix Opportunity Score.
+- **Blueprint Architect Agent:** generates a structured Syntrix Agent Blueprint.
+- **Safety Governance Agent:** applies approval gates, traceability, and sensitive-content controls.
+- **Learning Loop Agent:** recommends controlled blueprint updates from Week 1 vs Week 3 signals.
+
+## Syntrix Reasoning Engine
+
+`POST /api/analyze` returns one complete reasoning response with:
+
+- `master_agent_summary`
+- `reasoning_trace`
+- `opportunity_scores`
+- `recommended_blueprint`
+- `governance_gates`
+- `learning_loop_recommendation`
+- `iq_evidence`
+
+The engine is deterministic, local, and explainable. It does not call paid APIs or live enterprise systems.
+
+## Microsoft IQ Layer
+
+Syntrix IQ Layer v1 shows Microsoft IQ-ready architecture with local, synthetic assets.
+
+### Foundry IQ-ready Knowledge Pack
+
+`knowledge/foundry_iq_pack/` contains approved synthetic markdown sources used for grounding blueprint and governance recommendations:
+
+- Agent design principles
+- Enterprise AI governance
+- Copilot adoption patterns
+- Safe agent deployment checklist
+- Blueprint quality standards
+- Agent readiness rubric
+
+### Fabric IQ-style Ontology
+
+`knowledge/fabric_ontology/syntrix_ontology.json` models:
+
+- `UserProfile`
+- `WorkSignal`
+- `WorkPattern`
+- `AgentOpportunity`
+- `AgentBlueprint`
+- `GovernanceGate`
+- `EvaluationCase`
+- `LearningLoopUpdate`
+
+It also models relationships such as `WorkSignal reveals WorkPattern`, `AgentOpportunity generates AgentBlueprint`, and `LearningLoopUpdate improves AgentBlueprint`.
+
+### Work IQ-style Synthetic Signals
+
+`knowledge/work_iq_signals/work_context_signals.json` models synthetic work context:
+
+- Frequent apps
+- Meeting load
+- Collaboration patterns
+- Recurring tasks
+- Output preferences
+- Stakeholder context
+- Approval sensitivity
+
+The IQ services expose status, evidence retrieval, and citations through the API. They are designed so a future production version could connect to real Foundry IQ, Fabric, and Microsoft 365 work-context sources after consent, tenant boundaries, and governance are approved.
+
+## Safety and Governance
+
+Syntrix is designed as a governed recommendation system, not an autonomous write agent.
+
+- Human approval before external communication.
+- Human approval before system changes.
+- Source traceability required.
+- Sensitive HR, legal, financial, employee-impacting, and customer-impacting content flagged.
+- No autonomous write actions without approval.
+- Learning loop recommends controlled blueprint updates; it does not silently retrain a model.
+
+## Synthetic Data Policy
+
+This repository uses synthetic data only.
+
+- No real emails.
+- No real customers.
+- No real employees.
+- No confidential documents.
+- No production exports.
+- No secrets or paid API keys.
+- No Azure credentials required for the local demo.
+
+Synthetic data lives in `synthetic_data/` and `knowledge/`.
+
+## How To Run Locally
 
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
-streamlit run app.py
 ```
 
-## Run the Cinematic FastAPI Demo
+Run the primary cinematic demo:
 
 ```bash
-.venv\Scripts\activate
 uvicorn backend.main:app --reload --port 8000
 ```
 
@@ -94,36 +169,106 @@ Open:
 - Product demo: `http://localhost:8000`
 - API docs: `http://localhost:8000/docs`
 
-No paid APIs are required. No real secrets are needed. The app uses synthetic data only.
+Run the Streamlit backup:
 
-## Microsoft IQ Alignment
+```bash
+streamlit run app.py
+```
 
-Syntrix aligns to enterprise AI adoption priorities:
+## API Endpoints
 
-- **Reasoning:** analyzes recurring work patterns before recommending agents.
-- **Governance:** generates guardrails, approval points, and evaluation tests.
-- **Productivity:** focuses on measurable repeated workflows rather than generic chat.
-- **Trust:** avoids real company data in the demo and makes assumptions visible.
-- **Continuous improvement:** compares usage patterns over time to refine agent design.
+| Endpoint | Method | Purpose |
+| --- | --- | --- |
+| `/` | GET | Serves the cinematic frontend |
+| `/docs` | GET | FastAPI Swagger docs |
+| `/api/health` | GET | Health check |
+| `/api/profiles` | GET | Synthetic workspace profile list |
+| `/api/interactions` | GET | Synthetic interaction records |
+| `/api/analyze` | POST | Full Syntrix Reasoning Engine response |
+| `/api/blueprint` | POST | Standalone blueprint generation |
+| `/api/iq/status` | GET | IQ Layer status |
+| `/api/iq/evidence` | GET | Grounded evidence and citations |
+| `/api/iq/retrieve` | POST | Query local IQ evidence |
+| `/api/evaluation/summary` | GET | Evaluation summary |
 
-## Microsoft IQ Integration
+Example:
 
-Syntrix IQ Layer v1 is local and demo-safe. It is designed to show how Syntrix can align with Microsoft IQ concepts without requiring live Azure credentials.
+```bash
+curl -X POST http://localhost:8000/api/analyze ^
+  -H "Content-Type: application/json" ^
+  -d "{\"profile\":\"Project Manager\"}"
+```
 
-- **Foundry IQ-ready knowledge pack:** synthetic markdown sources in `knowledge/foundry_iq_pack/` provide approved grounding material for blueprint quality, governance, adoption patterns, and safe deployment.
-- **Fabric IQ-style ontology:** `knowledge/fabric_ontology/syntrix_ontology.json` models users, work signals, work patterns, opportunities, blueprints, governance gates, evaluation cases, and learning-loop updates.
-- **Work IQ-style synthetic signals:** `knowledge/work_iq_signals/work_context_signals.json` models synthetic collaboration patterns, recurring tasks, output preferences, stakeholder context, and approval sensitivity.
-- **Future connection path:** the local services can later be replaced or extended with real Foundry IQ, Fabric, and Microsoft 365 work-context integrations after tenant boundaries, consent, security, and data governance are approved.
+## Demo Flow
 
-No real company data is used. No paid APIs or Azure credentials are required for the local demo.
+1. Open `http://localhost:8000`.
+2. Start with the thesis: "Do not ask users to design agents. Let AI discover the agents they already need."
+3. Use the Workspace Signal Snapshot selector.
+4. Show task frequency and Syntrix Opportunity Score.
+5. Walk through the Syntrix Master Agent System and reasoning trace.
+6. Show the generated Agent Blueprint.
+7. Point to Governance Gates.
+8. Show Microsoft IQ-ready architecture and cited synthetic evidence.
+9. Close with the Syntrix Learning Loop: controlled recommendations, not silent retraining.
 
-## Internal Labels
+## Evaluation and QA
+
+Lightweight QA scripts:
+
+```bash
+python evals/qa_reasoning_engine.py
+python evals/qa_iq_layer.py
+```
+
+These verify that:
+
+- Synthetic data loads.
+- Reasoning pipeline runs.
+- At least three opportunities are scored.
+- A blueprint is generated.
+- Governance gates are present.
+- Learning loop recommendation is present.
+- IQ knowledge pack, ontology, signals, evidence, and citations load.
+
+Additional public evaluation materials:
+
+- `evals/scoring_rubric.md`
+- `evals/test_cases.md`
+- `evals/qa_checklist.md`
+
+## Hackathon Judging Rubric Alignment
+
+- **Accuracy & relevance:** recommendations are tied to repeated synthetic work patterns and transparent scores.
+- **Reasoning & multi-step thinking:** Master Agent coordinates specialist agents and returns a reasoning trace.
+- **Creativity & originality:** Syntrix reframes agent creation as discovery from work signals, not manual configuration.
+- **User experience & presentation:** cinematic frontend tells a complete product story with charts, blueprints, governance, IQ evidence, and learning loop.
+- **Reliability & safety:** local deterministic pipeline, synthetic data policy, no paid APIs, no secrets, human approval gates.
+- **Community vote:** simple thesis, memorable tagline, and clear enterprise relevance.
+
+## Project Structure
+
+```text
+ReasoningAgent/
+|-- app.py
+|-- backend/
+|-- frontend/
+|-- agents/
+|-- synthetic_data/
+|-- knowledge/
+|   |-- foundry_iq_pack/
+|   |-- fabric_ontology/
+|   `-- work_iq_signals/
+|-- diagrams/
+|-- docs/
+|-- evals/
+|-- outputs/
+|-- requirements.txt
+`-- README.md
+```
+
+## Internal Product Labels
 
 - Syntrix Reasoning Engine
 - Syntrix Opportunity Score
 - Syntrix Agent Blueprint
 - Syntrix Continuous Improvement Loop
-
-## Safety Boundary
-
-This repository intentionally uses synthetic interaction logs. It must not include real emails, real customers, real employees, confidential documents, or production credentials.

@@ -1,17 +1,20 @@
 sequenceDiagram
-    participant U as Synthetic User Profile
-    participant L as Copilot-style Logs
-    participant P as Pattern Discovery Agent
-    participant S as Opportunity Scoring Agent
-    participant B as Blueprint Generation Agent
-    participant G as Safety Review Agent
-    participant C as Continuous Improvement Agent
+    participant U as Workspace Signal Snapshot
+    participant M as Master Agent
+    participant D as Signal Discovery Agent
+    participant S as Pattern Scoring Agent
+    participant B as Blueprint Architect Agent
+    participant G as Safety Governance Agent
+    participant I as Syntrix IQ Layer
+    participant L as Learning Loop Agent
 
-    U->>L: Produces synthetic work interactions
-    L->>P: Group prompts by workflow
-    P->>S: Send repeated patterns and metrics
-    S->>B: Rank agent opportunities
-    B->>G: Generate proposed Syntrix Agent Blueprint
-    G->>B: Add guardrails and approval gates
-    B->>C: Track outcomes across weeks
-    C->>S: Recommend scoring and trigger refinements
+    U->>M: Provide synthetic work signals
+    M->>D: Detect repeated workflows
+    D->>S: Send workflow clusters and metrics
+    S->>B: Send ranked opportunities
+    I->>B: Provide cited synthetic grounding sources
+    B->>G: Submit generated agent blueprint
+    I->>G: Provide governance and traceability evidence
+    G->>L: Return governed blueprint
+    L->>M: Recommend controlled v1.1 update
+    M->>U: Return reasoning trace, scores, blueprint, gates, and learning recommendation

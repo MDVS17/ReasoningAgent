@@ -1,11 +1,20 @@
 flowchart LR
-    A[Synthetic Copilot-style interaction logs] --> B[Syntrix Reasoning Engine]
-    B --> C[Pattern Discovery Agent]
-    B --> D[Opportunity Scoring Agent]
-    C --> E[Repeated workflow clusters]
-    D --> F[Syntrix Opportunity Score]
-    E --> G[Blueprint Generation Agent]
-    F --> G
-    G --> H[Safety Review Agent]
-    H --> I[Syntrix Agent Blueprint]
-    I --> J[Syntrix Continuous Improvement Loop]
+    A[Synthetic workspace signals] --> B[Syntrix Reasoning Engine]
+    B --> C[Master Agent]
+
+    C --> D[Signal Discovery Agent]
+    C --> E[Pattern Scoring Agent]
+    C --> F[Blueprint Architect Agent]
+    C --> G[Safety Governance Agent]
+    C --> H[Learning Loop Agent]
+
+    D --> I[Repeated work patterns]
+    E --> J[Syntrix Opportunity Score]
+    F --> K[Syntrix Agent Blueprint]
+    G --> L[Governance Gates]
+    H --> M[Controlled blueprint update]
+
+    N[Foundry IQ-ready knowledge pack] --> F
+    O[Fabric IQ-style ontology] --> F
+    P[Work IQ-style synthetic signals] --> D
+    N --> G
