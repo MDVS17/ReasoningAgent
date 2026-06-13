@@ -8,6 +8,88 @@ const state = {
 
 const $ = (id) => document.getElementById(id);
 
+const masterAgentSystem = [
+  {
+    name: "Master Agent",
+    tag: "Orchestrator",
+    role: "Coordinates the full discovery-to-blueprint reasoning loop.",
+    detail:
+      "The Master Agent studies workspace signals, decides which specialized agent should reason next, and keeps the system focused on discovering useful personalized agents instead of producing generic automation ideas.",
+    points: [
+      "Routes work signals to the right specialist agent.",
+      "Maintains the product goal: discover, design, and improve agents.",
+      "Combines scores, safety findings, and blueprint recommendations.",
+    ],
+    icon: "core",
+    master: true,
+  },
+  {
+    name: "Signal Discovery Agent",
+    tag: "Sensing",
+    role: "Reads workspace signals and identifies recurring work themes.",
+    detail:
+      "This agent reviews synthetic Copilot-style interactions and extracts the repeated behaviors that suggest an agent opportunity may exist.",
+    points: [
+      "Groups prompts by workflow and role context.",
+      "Separates one-off questions from repeated work patterns.",
+      "Feeds high-signal clusters into scoring.",
+    ],
+    icon: "signal",
+  },
+  {
+    name: "Pattern Scoring Agent",
+    tag: "Ranking",
+    role: "Turns repeated effort into a Syntrix Opportunity Score.",
+    detail:
+      "This agent evaluates frequency, time saved, repetition, business value, and risk so Syntrix can prioritize the agent opportunities most worth designing.",
+    points: [
+      "Scores opportunities with transparent local heuristics.",
+      "Balances productivity lift with governance risk.",
+      "Ranks the best opportunities for blueprint generation.",
+    ],
+    icon: "score",
+  },
+  {
+    name: "Blueprint Architect Agent",
+    tag: "Design",
+    role: "Designs safe personalized agent blueprints from ranked patterns.",
+    detail:
+      "This agent converts the highest-value workflow pattern into a structured Syntrix Agent Blueprint with purpose, triggers, instructions, tools, tests, and approval points.",
+    points: [
+      "Creates instructions tied to the target user's work.",
+      "Specifies knowledge sources and suggested actions.",
+      "Defines evaluation tests before deployment.",
+    ],
+    icon: "blueprint",
+  },
+  {
+    name: "Safety Governance Agent",
+    tag: "Control",
+    role: "Reviews proposed agents for policy, approval, and risk controls.",
+    detail:
+      "This agent checks whether the blueprint is appropriate for a synthetic local demo and ensures consequential actions stay behind human approval.",
+    points: [
+      "Validates synthetic-data boundaries.",
+      "Adds human approval gates for sensitive actions.",
+      "Keeps recommendations advisory until governed.",
+    ],
+    icon: "shield",
+  },
+  {
+    name: "Learning Loop Agent",
+    tag: "Improve",
+    role: "Compares usage over time and recommends blueprint refinements.",
+    detail:
+      "This agent closes the loop by comparing Week 1 and Week 3 signals, identifying where the agent design should improve, narrow, or add new tests.",
+    points: [
+      "Tracks opportunity score movement over time.",
+      "Suggests trigger and evaluation refinements.",
+      "Turns demo feedback into better future agents.",
+    ],
+    icon: "loop",
+  },
+];
+
 async function api(path, options = {}) {
   const response = await fetch(path, {
     headers: { "Content-Type": "application/json" },
@@ -39,10 +121,62 @@ function renderBars(container, rows, valueKey, maxValue, colorClass = "") {
   });
 }
 
-function renderFlow(steps) {
-  $("reasoningFlow").innerHTML = steps
-    .map((step, index) => `<div class="flow-step"><span>${index + 1}</span><strong>${step}</strong></div>`)
+function avatar(icon) {
+  const paths = {
+    core: `<path d="M6 15h16v10H6z"/><path d="M10 9h8v6h-8z"/><path d="M12 5h4v4h-4z"/><path d="M9 18h2v2H9zM17 18h2v2h-2z"/>`,
+    signal: `<path d="M5 23h4v4H5zM12 17h4v10h-4zM19 11h4v16h-4z"/><path d="M7 11l5-5 5 4 6-7"/>`,
+    score: `<path d="M5 24h18"/><path d="M7 20l4-5 4 3 7-10"/><path d="M18 8h4v4"/>`,
+    blueprint: `<path d="M7 5h16v22H7z"/><path d="M11 10h8M11 15h8M11 20h5"/>`,
+    shield: `<path d="M16 4l10 4v7c0 7-4.5 11-10 13C10.5 26 6 22 6 15V8z"/><path d="M12 16l3 3 6-7"/>`,
+    loop: `<path d="M8 12a8 8 0 0113-4l2 2"/><path d="M23 5v5h-5"/><path d="M24 20a8 8 0 01-13 4l-2-2"/><path d="M9 27v-5h5"/>`,
+  };
+  return `
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+      ${paths[icon] || paths.core}
+    </svg>
+  `;
+}
+
+function renderAgentDetail(agent) {
+  $("agentDetailPanel").innerHTML = `
+    <div class="agent-avatar">${avatar(agent.icon)}</div>
+    <span class="agent-tag">${agent.tag}</span>
+    <h3>${agent.name}</h3>
+    <p>${agent.detail}</p>
+    <ul>
+      ${agent.points.map((point) => `<li>${point}</li>`).join("")}
+    </ul>
+  `;
+}
+
+function renderFlow() {
+  $("reasoningFlow").innerHTML = masterAgentSystem
+    .map(
+      (agent, index) => `
+        <button class="agent-card ${agent.master ? "is-master is-active" : ""}" type="button" data-agent-index="${index}">
+          <div class="agent-card-header">
+            <div class="agent-avatar">${avatar(agent.icon)}</div>
+            <div>
+              <span class="agent-tag">${agent.tag}</span>
+              <h3>${agent.name}</h3>
+            </div>
+          </div>
+          <p>${agent.role}</p>
+        </button>
+      `,
+    )
     .join("");
+
+  renderAgentDetail(masterAgentSystem[0]);
+
+  document.querySelectorAll(".agent-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const index = Number(card.dataset.agentIndex);
+      document.querySelectorAll(".agent-card").forEach((item) => item.classList.remove("is-active"));
+      card.classList.add("is-active");
+      renderAgentDetail(masterAgentSystem[index]);
+    });
+  });
 }
 
 function renderBlueprint(payload) {

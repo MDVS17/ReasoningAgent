@@ -32,17 +32,20 @@
             <a href="/docs" class="secondary-action">API Docs</a>
           </div>
         </div>
-        <div class="signal-core" aria-label="Animated synthetic work-pattern signal field">
-          <div class="orbital orbital-one"></div>
-          <div class="orbital orbital-two"></div>
-          <div class="orbital orbital-three"></div>
+        <div class="signal-core" aria-label="Syntrix Master Agent orbit system">
+          <div class="orbit-shell orbit-outer"></div>
+          <div class="orbit-shell orbit-middle"></div>
+          <div class="orbit-shell orbit-inner"></div>
+          <div class="orbit-axis axis-horizontal"></div>
+          <div class="orbit-axis axis-vertical"></div>
           <div class="core-node">
-            <span>AI</span>
-            <small>discovers agents</small>
+            <span>Syntrix Core</span>
+            <small>Master Agent</small>
           </div>
-          <div class="signal-chip chip-a">Patterns</div>
-          <div class="signal-chip chip-b">Scores</div>
-          <div class="signal-chip chip-c">Blueprints</div>
+          <div class="signal-chip chip-top">Patterns</div>
+          <div class="signal-chip chip-right">Scores</div>
+          <div class="signal-chip chip-bottom">Blueprints</div>
+          <div class="signal-chip chip-left">Agents</div>
         </div>
       </section>
     </header>
@@ -103,10 +106,13 @@
 
       <section class="section-band flow-section">
         <div>
-          <p class="eyebrow">Multi-Agent Reasoning Flow</p>
-          <h2>Five agents turn usage traces into governed action.</h2>
+          <p class="eyebrow">Syntrix Master Agent System</p>
+          <h2>Six coordinated agents discover, design, govern, and improve personalized agents.</h2>
         </div>
-        <div id="reasoningFlow" class="flow-row"></div>
+        <div class="agent-system-layout">
+          <div id="reasoningFlow" class="flow-row"></div>
+          <aside id="agentDetailPanel" class="agent-detail-panel" aria-live="polite"></aside>
+        </div>
       </section>
 
       <section class="section-grid blueprint-grid">
