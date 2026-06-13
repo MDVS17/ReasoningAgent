@@ -632,6 +632,64 @@ select {
   grid-template-columns: minmax(0, 1fr) 380px;
 }
 
+.artifact-shell {
+  border: 1px solid rgba(244, 243, 238, 0.12);
+  border-radius: 20px;
+  padding: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.03);
+}
+
+.artifact-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.artifact-status,
+.artifact-score {
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.artifact-status {
+  color: var(--ink);
+  background: var(--green);
+}
+
+.artifact-score {
+  color: var(--gold);
+  border: 1px solid rgba(245, 201, 107, 0.28);
+  background: rgba(245, 201, 107, 0.08);
+}
+
+.recommendation-card,
+.improvement-path,
+.artifact-block {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: rgba(8, 9, 7, 0.26);
+}
+
+.recommendation-card {
+  margin: 18px 0;
+}
+
+.recommendation-card p,
+.improvement-path p,
+.learning-copy {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 .blueprint-columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -645,7 +703,9 @@ ul {
 }
 
 .governance-panel {
-  background: rgba(28, 20, 22, 0.86);
+  background:
+    radial-gradient(circle at top right, rgba(245, 201, 107, 0.1), transparent 36%),
+    rgba(28, 20, 22, 0.86);
 }
 
 .risk-badge {
@@ -654,6 +714,47 @@ ul {
   color: var(--gold);
   border-color: rgba(245, 201, 107, 0.32);
   background: rgba(245, 201, 107, 0.1);
+}
+
+.gate-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.gate-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 13px;
+  border: 1px solid rgba(244, 243, 238, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.gate-item span {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: rgba(124, 247, 178, 0.13);
+  border: 1px solid rgba(124, 247, 178, 0.22);
+}
+
+.gate-item span::before {
+  content: "";
+  width: 11px;
+  height: 7px;
+  border-left: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.gate-item strong {
+  font-size: 0.94rem;
+  line-height: 1.35;
 }
 
 .iq-grid {
@@ -665,22 +766,112 @@ ul {
 .iq-card {
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.045);
+  padding: 22px;
+  background:
+    linear-gradient(135deg, rgba(124, 247, 178, 0.07), rgba(255, 255, 255, 0.025)),
+    rgba(255, 255, 255, 0.04);
 }
 
-.iq-card strong {
-  display: block;
+.iq-card-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.iq-card-heading strong {
   color: var(--green);
-  margin-bottom: 8px;
+}
+
+.iq-card-heading span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 9px;
+}
+
+.iq-card p {
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .improvement-grid {
-  grid-template-columns: minmax(0, 1fr) 400px;
+  grid-template-columns: minmax(0, 1fr) 430px;
 }
 
 .wide-card {
-  min-height: 460px;
+  min-height: 500px;
+}
+
+.learning-loop {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.learning-step {
+  min-height: 190px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.learning-step span {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.learning-step strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.learning-step p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.learning-step.featured {
+  border-color: rgba(124, 247, 178, 0.34);
+  background:
+    linear-gradient(135deg, rgba(124, 247, 178, 0.12), rgba(245, 201, 107, 0.06)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.learning-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.learning-metrics div {
+  border: 1px solid rgba(124, 247, 178, 0.22);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(124, 247, 178, 0.07);
+}
+
+.learning-metrics span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.learning-metrics strong {
+  font-size: 1.25rem;
 }
 
 .line-chart {
@@ -765,7 +956,9 @@ ul {
   .improvement-grid,
   .chart-pair,
   .blueprint-columns,
-  .iq-grid {
+  .iq-grid,
+  .learning-loop,
+  .learning-metrics {
     grid-template-columns: 1fr;
   }
 

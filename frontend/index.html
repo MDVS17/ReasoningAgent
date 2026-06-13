@@ -119,52 +119,96 @@
         <section class="blueprint-panel">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Syntrix Agent Blueprint</p>
+              <p class="eyebrow">Generated Agent Blueprint</p>
               <h2 id="blueprintName">Generating blueprint...</h2>
             </div>
             <span id="blueprintTarget" class="live-pill"></span>
           </div>
-          <p id="blueprintPurpose" class="purpose-copy"></p>
-          <div class="blueprint-columns">
-            <div>
-              <h3>Instructions</h3>
-              <ul id="blueprintInstructions"></ul>
+          <div class="artifact-shell">
+            <div class="artifact-header">
+              <span class="artifact-status">Generated artifact</span>
+              <span id="artifactScore" class="artifact-score">Score --</span>
             </div>
-            <div>
-              <h3>Guardrails</h3>
-              <ul id="blueprintGuardrails"></ul>
+            <p id="blueprintPurpose" class="purpose-copy"></p>
+            <div class="recommendation-card">
+              <h3>Why Syntrix recommended it</h3>
+              <p id="blueprintRationale"></p>
+            </div>
+            <div class="blueprint-columns">
+              <div class="artifact-block">
+                <h3>Triggering work patterns</h3>
+                <ul id="blueprintTriggers"></ul>
+              </div>
+              <div class="artifact-block">
+                <h3>Capabilities</h3>
+                <ul id="blueprintCapabilities"></ul>
+              </div>
+              <div class="artifact-block">
+                <h3>Guardrails</h3>
+                <ul id="blueprintGuardrails"></ul>
+              </div>
+              <div class="artifact-block">
+                <h3>Human approval gates</h3>
+                <ul id="approvalGates"></ul>
+              </div>
+            </div>
+            <div class="improvement-path">
+              <h3>Improvement path</h3>
+              <p id="blueprintImprovement"></p>
             </div>
           </div>
         </section>
 
         <aside class="governance-panel">
           <p class="eyebrow">Safety & Governance</p>
-          <h2 id="safetyDecision">Review pending</h2>
-          <div id="riskBadge" class="risk-badge">--</div>
-          <p id="safetyNotes"></p>
-          <h3>Approval Points</h3>
-          <ul id="approvalPoints"></ul>
+          <h2>Governance Gates</h2>
+          <div id="riskBadge" class="risk-badge">Risk review pending</div>
+          <div id="governanceGates" class="gate-list"></div>
         </aside>
       </section>
 
       <section class="section-band">
         <div>
           <p class="eyebrow">Microsoft IQ Layer</p>
-          <h2>IQ-aligned signals without real enterprise data.</h2>
+          <h2>Microsoft IQ-ready architecture</h2>
         </div>
         <div id="iqCards" class="iq-grid"></div>
       </section>
 
       <section class="section-grid improvement-grid">
         <section class="chart-card wide-card">
-          <p class="eyebrow">Syntrix Continuous Improvement Loop</p>
-          <h2>Week 1 vs Week 3 signal lift</h2>
-          <div id="improvementChart" class="line-chart"></div>
+          <p class="eyebrow">Syntrix Learning Loop</p>
+          <h2>Controlled blueprint updates, not silent retraining.</h2>
+          <p class="learning-copy">
+            Syntrix does not silently retrain a model. It observes new work signals and recommends
+            controlled blueprint updates for human approval.
+          </p>
+          <div class="learning-loop">
+            <div class="learning-step">
+              <span>Week 1</span>
+              <strong>Initial patterns detected</strong>
+              <p>Repeated workflow clusters are discovered from workspace signals.</p>
+            </div>
+            <div class="learning-step">
+              <span>Week 3</span>
+              <strong>New signals observed</strong>
+              <p>Usage drift, recurring edits, and emerging needs are compared.</p>
+            </div>
+            <div class="learning-step featured">
+              <span>Agent v1.1</span>
+              <strong>Recommendation</strong>
+              <p>Update triggers, add one capability, and tighten evaluation checks.</p>
+            </div>
+          </div>
+          <div class="learning-metrics">
+            <div><span>New capability added</span><strong id="learningCapability">Workflow escalation summary</strong></div>
+            <div><span>Confidence lift</span><strong id="confidenceLift">+9 pts</strong></div>
+          </div>
         </section>
         <aside class="evaluation-panel">
-          <p class="eyebrow">Evaluation Summary</p>
-          <h2 id="evalStatus">Loading...</h2>
-          <div id="evalList"></div>
+          <p class="eyebrow">Learning Evidence</p>
+          <h2>Week 1 -> Week 3</h2>
+          <div id="improvementChart" class="line-chart"></div>
         </aside>
       </section>
 

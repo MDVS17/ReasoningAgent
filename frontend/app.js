@@ -181,20 +181,59 @@ function renderFlow() {
 
 function renderBlueprint(payload) {
   const blueprint = payload.blueprint;
-  const review = payload.safety_review;
+  const opportunity = payload.opportunity;
   $("blueprintName").textContent = blueprint.agent_name;
-  $("blueprintTarget").textContent = blueprint.target_user;
+  $("blueprintTarget").textContent = `Target user: ${blueprint.target_user}`;
+  $("artifactScore").textContent = `Score ${opportunity.syntrix_opportunity_score}`;
   $("blueprintPurpose").textContent = blueprint.purpose;
-  $("blueprintInstructions").innerHTML = blueprint.instructions.map((item) => `<li>${item}</li>`).join("");
+  $("blueprintRationale").textContent = opportunity.rationale;
+  $("blueprintTriggers").innerHTML = blueprint.triggering_work_patterns.map((item) => `<li>${item}</li>`).join("");
+  $("blueprintCapabilities").innerHTML = blueprint.suggested_tools_actions.map((item) => `<li>${item}</li>`).join("");
   $("blueprintGuardrails").innerHTML = blueprint.guardrails.map((item) => `<li>${item}</li>`).join("");
-  $("safetyDecision").textContent = review.decision;
-  $("riskBadge").textContent = `${review.risk_level} risk`;
-  $("safetyNotes").textContent = review.reviewer_notes;
-  $("approvalPoints").innerHTML = blueprint.human_approval_points.map((item) => `<li>${item}</li>`).join("");
+  $("approvalGates").innerHTML = blueprint.human_approval_points.map((item) => `<li>${item}</li>`).join("");
+  $("blueprintImprovement").textContent = blueprint.continuous_improvement_recommendation;
+  $("riskBadge").textContent = `${payload.safety_review.risk_level} risk workflow`;
+  renderGovernanceGates();
+}
+
+function renderGovernanceGates() {
+  const gates = [
+    "Human approval before external communication",
+    "Human approval before system changes",
+    "Source traceability required",
+    "Sensitive content flagged",
+    "No autonomous write actions without approval",
+  ];
+  $("governanceGates").innerHTML = gates
+    .map(
+      (gate) => `
+        <div class="gate-item">
+          <span></span>
+          <strong>${gate}</strong>
+        </div>
+      `,
+    )
+    .join("");
 }
 
 function renderIQCards(iq) {
-  const cards = [iq.foundry_iq, iq.fabric_iq, iq.work_iq];
+  const cards = [
+    {
+      name: "Foundry IQ",
+      description: "Grounded knowledge retrieval for approved sources.",
+      signals: iq.foundry_iq.signals,
+    },
+    {
+      name: "Fabric IQ",
+      description: "Semantic model for users, workflows, agents, and guardrails.",
+      signals: iq.fabric_iq.signals,
+    },
+    {
+      name: "Work IQ",
+      description: "Work-context signals from collaboration patterns and user activity.",
+      signals: iq.work_iq.signals,
+    },
+  ];
   $("iqCards").innerHTML = cards
     .map((card) => {
       const signalMarkup = (card.signals || [])
@@ -205,8 +244,11 @@ function renderIQCards(iq) {
         .join("");
       return `
         <article class="iq-card">
-          <strong>${card.name}</strong>
-          <h3>${card.status}</h3>
+          <div class="iq-card-heading">
+            <strong>${card.name}</strong>
+            <span>demo mode</span>
+          </div>
+          <h3>Ready layer</h3>
           <p>${card.description}</p>
           ${signalMarkup}
         </article>
@@ -216,8 +258,14 @@ function renderIQCards(iq) {
 }
 
 function renderImprovement(rows) {
+  if (rows.length) {
+    const first = rows[0];
+    const lift = Number(first.week_3_avg_score) - Number(first.week_1_avg_score);
+    $("confidenceLift").textContent = `+${lift} pts`;
+    $("learningCapability").textContent = `${first.workflow} escalation summary`;
+  }
   $("improvementChart").innerHTML = rows
-    .slice(0, 8)
+    .slice(0, 5)
     .map((row) => {
       const weekOne = Math.max(0, Math.min(94, Number(row.week_1_avg_score)));
       const weekThree = Math.max(0, Math.min(94, Number(row.week_3_avg_score)));
@@ -233,10 +281,7 @@ function renderImprovement(rows) {
 }
 
 function renderEvaluation(summary) {
-  $("evalStatus").textContent = summary.safety_status;
-  $("evalList").innerHTML = summary.rubric
-    .map((item) => `<div class="eval-item"><span>${item.criterion}</span><strong>${item.score}</strong></div>`)
-    .join("");
+  state.evaluation = summary;
 }
 
 function renderAnalysis() {

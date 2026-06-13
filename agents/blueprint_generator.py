@@ -3,11 +3,23 @@
 from .models import AgentBlueprint, AgentOpportunity
 
 
+AGENT_NAME_BY_WORKFLOW = {
+    "Campaign launch brief": "Campaign Launch Brief Agent",
+    "Weekly performance narrative": "Performance Narrative Agent",
+    "Content repurposing plan": "Content Repurposing Agent",
+    "Executive status update": "Executive Status Agent",
+    "Risk and dependency tracker": "Risk & Dependency Tracker Agent",
+    "Meeting action follow-up": "Meeting Action Follow-up Agent",
+    "Manager guidance draft": "Manager Guidance Agent",
+    "Onboarding checklist": "Onboarding Checklist Agent",
+    "Policy Q&A response": "Policy Guidance Agent",
+}
+
+
 def generate_blueprint(opportunity: AgentOpportunity) -> AgentBlueprint:
     """Create a deterministic, presentation-ready agent blueprint."""
 
-    workflow_slug = opportunity.workflow.replace(" ", "").replace("/", "")
-    agent_name = f"{opportunity.profile.split()[0]} {workflow_slug} Agent"
+    agent_name = AGENT_NAME_BY_WORKFLOW.get(opportunity.workflow, f"{opportunity.workflow.title()} Agent")
 
     return AgentBlueprint(
         agent_name=agent_name,
