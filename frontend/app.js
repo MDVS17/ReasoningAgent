@@ -12,13 +12,13 @@ const masterAgentSystem = [
   {
     name: "Master Agent",
     tag: "Orchestrator",
-    role: "Coordinates the full discovery-to-blueprint reasoning loop.",
+    role: "Directs the full discovery-to-blueprint reasoning loop.",
     detail:
-      "The Master Agent studies workspace signals, decides which specialized agent should reason next, and keeps the system focused on discovering useful personalized agents instead of producing generic automation ideas.",
+      "The Master Agent studies the workspace signal stream, decides which specialist should reason next, and keeps Syntrix focused on designing useful agents rather than generic automation ideas.",
     points: [
-      "Routes work signals to the right specialist agent.",
-      "Maintains the product goal: discover, design, and improve agents.",
-      "Combines scores, safety findings, and blueprint recommendations.",
+      "Routes signals to the right specialist.",
+      "Keeps discovery, design, governance, and learning in sequence.",
+      "Combines scores, safety findings, and blueprint recommendations into one artifact.",
     ],
     icon: "core",
     master: true,
@@ -26,11 +26,11 @@ const masterAgentSystem = [
   {
     name: "Signal Discovery Agent",
     tag: "Sensing",
-    role: "Reads workspace signals and identifies recurring work themes.",
+    role: "Finds recurring work signals inside the selected workspace view.",
     detail:
       "This agent reviews synthetic Copilot-style interactions and extracts the repeated behaviors that suggest an agent opportunity may exist.",
     points: [
-      "Groups prompts by workflow and role context.",
+      "Groups interactions by workflow and role context.",
       "Separates one-off questions from repeated work patterns.",
       "Feeds high-signal clusters into scoring.",
     ],
@@ -39,24 +39,24 @@ const masterAgentSystem = [
   {
     name: "Pattern Scoring Agent",
     tag: "Ranking",
-    role: "Turns repeated effort into a Syntrix Opportunity Score.",
+    role: "Ranks repeated effort using the Syntrix Opportunity Score.",
     detail:
       "This agent evaluates frequency, time saved, repetition, business value, and risk so Syntrix can prioritize the agent opportunities most worth designing.",
     points: [
       "Scores opportunities with transparent local heuristics.",
       "Balances productivity lift with governance risk.",
-      "Ranks the best opportunities for blueprint generation.",
+      "Promotes the strongest opportunities into blueprint generation.",
     ],
     icon: "score",
   },
   {
     name: "Blueprint Architect Agent",
     tag: "Design",
-    role: "Designs safe personalized agent blueprints from ranked patterns.",
+    role: "Turns ranked patterns into a generated agent blueprint.",
     detail:
       "This agent converts the highest-value workflow pattern into a structured Syntrix Agent Blueprint with purpose, triggers, instructions, tools, tests, and approval points.",
     points: [
-      "Creates instructions tied to the target user's work.",
+      "Creates instructions tied to the selected user's work.",
       "Specifies knowledge sources and suggested actions.",
       "Defines evaluation tests before deployment.",
     ],
@@ -65,26 +65,26 @@ const masterAgentSystem = [
   {
     name: "Safety Governance Agent",
     tag: "Control",
-    role: "Reviews proposed agents for policy, approval, and risk controls.",
+    role: "Applies governance gates before the blueprint is trusted.",
     detail:
       "This agent checks whether the blueprint is appropriate for a synthetic local demo and ensures consequential actions stay behind human approval.",
     points: [
       "Validates synthetic-data boundaries.",
       "Adds human approval gates for sensitive actions.",
-      "Keeps recommendations advisory until governed.",
+      "Keeps recommendations advisory until a human approves sensitive actions.",
     ],
     icon: "shield",
   },
   {
     name: "Learning Loop Agent",
     tag: "Improve",
-    role: "Compares usage over time and recommends blueprint refinements.",
+    role: "Recommends controlled blueprint updates as new signals appear.",
     detail:
       "This agent closes the loop by comparing Week 1 and Week 3 signals, identifying where the agent design should improve, narrow, or add new tests.",
     points: [
       "Tracks opportunity score movement over time.",
       "Suggests trigger and evaluation refinements.",
-      "Turns demo feedback into better future agents.",
+      "Turns observed signal changes into safer future agent versions.",
     ],
     icon: "loop",
   },
