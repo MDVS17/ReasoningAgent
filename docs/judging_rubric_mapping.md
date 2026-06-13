@@ -2,7 +2,7 @@
 
 ## Accuracy & Relevance
 
-Syntrix recommendations are tied to synthetic Copilot-style work interactions, repeated workflow patterns, and transparent opportunity scoring. The generated blueprint maps back to triggering work patterns, target user, guardrails, evaluation tests, and cited IQ evidence.
+Syntrix recommendations are tied to synthetic Copilot-style work interactions, repeated workflow patterns, and transparent opportunity scoring. The generated blueprint maps back to triggering work patterns, target user, guardrails, evaluation tests, and cited IQ evidence. Foundry IQ was live verified in Azure Foundry using synthetic governance documents.
 
 ## Reasoning & Multi-Step Thinking
 
@@ -36,7 +36,7 @@ The FastAPI demo serves a cinematic frontend with a clear story:
 
 ## Reliability & Safety
 
-Syntrix runs locally with deterministic logic, synthetic data, no secrets, and no paid APIs. Governance gates require human approval before external communication, system changes, sensitive content handling, or write-capable actions.
+Syntrix runs locally with deterministic logic, synthetic data, no secrets, and no required paid APIs. Governance gates require human approval before external communication, system changes, sensitive content handling, or write-capable actions. The public repo includes no Azure credentials and no real company data.
 
 ## Community Vote
 

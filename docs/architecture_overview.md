@@ -40,19 +40,25 @@ The Syntrix IQ Layer is implemented locally:
 - `backend/services/work_iq_service.py`
 - `backend/services/iq_layer_service.py`
 
-These services load local synthetic knowledge files, return status, provide evidence snippets, and attach citations to blueprint recommendations.
+These services load local synthetic knowledge files, return status, provide evidence snippets, and attach citations to blueprint recommendations. `/api/iq/status` also exposes non-secret metadata for the live Foundry IQ verification.
 
 ## Knowledge Pack
 
 `knowledge/foundry_iq_pack/` contains synthetic markdown sources used as approved grounding documents for blueprint and governance reasoning.
 
+The Foundry IQ knowledge base was live verified in Azure Foundry using these synthetic documents. See `docs/foundry_iq_setup.md` and `docs/assets/foundry-iq-live-proof.png`.
+
 ## Ontology
 
 `knowledge/fabric_ontology/syntrix_ontology.json` defines the semantic model for users, signals, patterns, opportunities, blueprints, governance gates, evaluation cases, and learning updates.
 
+This is a local semantic ontology layer, not a claim of live Fabric IQ integration.
+
 ## Work Signals
 
 `knowledge/work_iq_signals/work_context_signals.json` defines synthetic collaboration context, recurring tasks, output preferences, stakeholder context, and approval sensitivity.
+
+This is a local synthetic work-signal layer, not a claim of live Work IQ integration.
 
 ## API Docs
 

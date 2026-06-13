@@ -43,11 +43,11 @@ Scroll to Microsoft IQ-ready architecture.
 
 Explain the three IQ layers:
 
-- Foundry IQ: local knowledge pack with cited synthetic grounding sources.
-- Fabric IQ: semantic ontology for users, work signals, opportunities, blueprints, guardrails, evaluation, and learning updates.
-- Work IQ: synthetic collaboration-pattern signals such as meeting load, recurring tasks, output preferences, and approval sensitivity.
+- Foundry IQ: live verified in Azure Foundry using synthetic governance documents.
+- Fabric IQ: represented through a local semantic ontology for users, work signals, opportunities, blueprints, guardrails, evaluation, and learning updates.
+- Work IQ: represented through synthetic collaboration-pattern signals such as meeting load, recurring tasks, output preferences, and approval sensitivity.
 
-Show the evidence panel. The generated blueprint includes citations from local synthetic sources.
+Show the evidence panel. The generated blueprint includes citations from synthetic sources, and the repo includes the proof screenshot at `docs/assets/foundry-iq-live-proof.png`.
 
 ## 2:20-2:45 Generated Blueprint
 
