@@ -1,5 +1,44 @@
 # Syntrix Architecture Overview
 
+Syntrix — Copilot Agent Architect is an AI Agent Factory for Microsoft 365. It discovers enterprise work patterns from Microsoft 365-style collaboration signals and generates review-ready Copilot Agent Blueprints.
+
+## Target Flow
+
+```text
+Microsoft 365 collaboration signals
+-> Graph-ready signal model
+-> Pattern Intelligence
+-> Syntrix Master Agent
+-> Agent Factory
+-> Copilot Agent Blueprint
+-> Copilot Studio Review
+-> Continuous Improvement Loop
+```
+
+## Architecture Diagram
+
+```mermaid
+flowchart LR
+    A[Microsoft 365 collaboration signals] --> B[Graph-ready signal model]
+    B --> C[Pattern Intelligence]
+    C --> D[Syntrix Master Agent]
+    D --> E[Agent Factory]
+    E --> F[Signal Discovery Agent]
+    E --> G[Pattern Scoring Agent]
+    E --> H[Blueprint Architect Agent]
+    E --> I[Safety Governance Agent]
+    E --> J[Learning Loop Agent]
+    F --> K[Repeated enterprise work patterns]
+    G --> L[Business Impact / ROI / Confidence Score / Impact Score]
+    H --> M[Copilot Agent Blueprint]
+    I --> N[Deployment Readiness Gates]
+    M --> O[Ready for Copilot Studio Review]
+    J --> P[Continuous Improvement Loop]
+    Q[Foundry IQ-ready Knowledge Pack] --> H
+    R[Fabric IQ Semantic Ontology] --> D
+    S[Work IQ Synthetic Signals] --> B
+```
+
 ## FastAPI Backend
 
 `backend/main.py` creates the FastAPI app, serves the cinematic frontend at `/`, mounts static files from `frontend/`, and exposes Swagger docs at `/docs`.
@@ -11,54 +50,102 @@ Core route modules:
 - `backend/api/routes_blueprint.py`
 - `backend/api/routes_iq.py`
 
+Important endpoints:
+
+- `POST /api/analyze`: full Syntrix Agent Factory reasoning response.
+- `POST /api/blueprint`: standalone Copilot Agent Blueprint generation.
+- `GET /api/iq/status`: IQ Layer status with Foundry live-verification metadata.
+- `GET /api/evaluation/summary`: lightweight evaluation summary.
+
 ## Cinematic Frontend
 
-`frontend/index.html`, `frontend/styles.css`, and `frontend/app.js` implement the local product demo. The frontend calls the FastAPI endpoints, renders charts with vanilla JavaScript/CSS, shows the multi-agent cards, displays the reasoning trace, and presents the generated blueprint and IQ evidence panel.
+`frontend/index.html`, `frontend/styles.css`, and `frontend/app.js` implement the local product demo. The frontend renders:
 
-## Master Agent
+- Microsoft 365 Signals selector.
+- Pattern Intelligence charts.
+- Syntrix Master Agent System.
+- Agent Factory reasoning trace.
+- Copilot Agent Blueprint review document.
+- Deployment Readiness and governance gates.
+- Microsoft IQ-ready architecture and Blueprint Evidence.
+- Syntrix Continuous Improvement Loop.
 
-The Master Agent lives in the product-facing reasoning flow, implemented through `agents/reasoning_engine.py`. It orchestrates the specialist agents and returns a single JSON-ready result for `/api/analyze`.
+## Syntrix Master Agent
 
-## Specialist Agents
+The Master Agent lives in `agents/reasoning_engine.py`. It coordinates the specialist agents and returns a single JSON-ready result for `/api/analyze`.
 
-- **Signal Discovery Agent:** groups synthetic work interactions into repeated workflow clusters.
-- **Pattern Scoring Agent:** calculates Syntrix Opportunity Scores.
-- **Blueprint Architect Agent:** creates a structured Syntrix Agent Blueprint.
-- **Safety Governance Agent:** attaches governance gates and approval controls.
-- **Learning Loop Agent:** compares Week 1 and Week 3 signals and recommends controlled blueprint updates.
+The Master Agent does not call live Microsoft Graph or Copilot Studio. In the MVP, it reasons over synthetic data through a Graph-ready signal model.
 
-## Reasoning Trace
+## Agent Factory
 
-The reasoning trace is returned from `POST /api/analyze`. It explains each agent step, input, decision, output, and handoff. This makes Syntrix inspectable and demoable as a reasoning-agent system.
+The Agent Factory includes six product-facing agents:
 
-## IQ Services
+- **Master Agent:** coordinates the signal-to-blueprint workflow.
+- **Signal Discovery Agent:** turns Microsoft 365-style collaboration signals into repeated work patterns.
+- **Pattern Scoring Agent:** scores patterns by Business Impact, ROI, Confidence Score, Impact Score, and readiness.
+- **Blueprint Architect Agent:** generates the review-ready Copilot Agent Blueprint.
+- **Safety Governance Agent:** applies guardrails, approval points, source traceability, and Deployment Readiness gates.
+- **Learning Loop Agent:** prepares controlled blueprint updates from Week 1 vs Week 3 signals.
 
-The Syntrix IQ Layer is implemented locally:
+## Copilot Agent Blueprint
+
+The generated `copilot_agent_blueprint` is the core product artifact. It includes:
+
+- Agent name and department.
+- Business problem.
+- Detected work pattern.
+- Microsoft 365 Signals Used.
+- Suggested knowledge sources and actions.
+- System instructions.
+- Guardrails.
+- Estimated hours saved and estimated annual ROI.
+- Confidence Score and Impact Score.
+- Deployment Readiness.
+- Ready for Copilot Studio Review notes.
+- Foundry IQ grounding.
+- Evaluation tests.
+- Human approval points.
+- Continuous improvement recommendation.
+
+`recommended_blueprint` is still returned for backward compatibility.
+
+## Microsoft IQ Layer
+
+The Syntrix IQ Layer is implemented locally through:
 
 - `backend/services/foundry_iq_service.py`
 - `backend/services/fabric_iq_service.py`
 - `backend/services/work_iq_service.py`
 - `backend/services/iq_layer_service.py`
 
-These services load local synthetic knowledge files, return status, provide evidence snippets, and attach citations to blueprint recommendations. `/api/iq/status` also exposes non-secret metadata for the live Foundry IQ verification.
+These services load local synthetic knowledge files, return status, provide evidence snippets, and attach citations to blueprint outputs.
 
-## Knowledge Pack
+### Foundry IQ
 
-`knowledge/foundry_iq_pack/` contains synthetic markdown sources used as approved grounding documents for blueprint and governance reasoning.
+Foundry IQ was live verified in Azure Foundry using synthetic governance documents from `knowledge/foundry_iq_pack/`.
 
-The Foundry IQ knowledge base was live verified in Azure Foundry using these synthetic documents. See `docs/foundry_iq_setup.md` and `docs/assets/foundry-iq-live-proof.png`.
+The public repo includes non-secret verification details and the proof screenshot at `docs/assets/foundry-iq-live-proof.png`. It does not include Azure credentials, keys, connection strings, tenant secrets, or private environment files.
 
-## Ontology
+### Fabric IQ
 
-`knowledge/fabric_ontology/syntrix_ontology.json` defines the semantic model for users, signals, patterns, opportunities, blueprints, governance gates, evaluation cases, and learning updates.
+Fabric IQ is represented through `knowledge/fabric_ontology/syntrix_ontology.json`, a local semantic ontology layer for users, work signals, work patterns, agent opportunities, blueprints, governance gates, evaluation cases, and learning loop updates.
 
-This is a local semantic ontology layer, not a claim of live Fabric IQ integration.
+This is not a claim of live Fabric IQ integration.
 
-## Work Signals
+### Work IQ
 
-`knowledge/work_iq_signals/work_context_signals.json` defines synthetic collaboration context, recurring tasks, output preferences, stakeholder context, and approval sensitivity.
+Work IQ is represented through Microsoft 365-style synthetic work-context signals in `knowledge/work_iq_signals/work_context_signals.json`.
 
-This is a local synthetic work-signal layer, not a claim of live Work IQ integration.
+This is not a claim of live Work IQ integration or real Microsoft Graph usage.
+
+## Data Boundary
+
+Syntrix uses synthetic data only:
+
+- No real Microsoft 365 tenant data.
+- No real emails, chats, documents, customers, employees, or confidential data.
+- No secrets or paid API keys.
+- No live Microsoft Graph or Copilot Studio runtime integration in the MVP.
 
 ## API Docs
 

@@ -2,31 +2,43 @@
 
 ## 0:00-0:25 Opening Problem
 
-Companies are buying Copilot, but most teams still do not know which agents they need. The useful agent opportunities are hidden inside repeated everyday work: status updates, meeting follow-ups, campaign briefs, risk tracking, HR guidance, and policy responses.
+Copilot is now embedded across the workday: emails, chats, meetings, documents, dashboards, approvals, and tasks.
 
-Syntrix turns those scattered work signals into governed personalized agent blueprints.
+That creates a new enterprise problem. Copilot helps individuals move faster, but organizations still do not know which Copilot agents they actually need next.
+
+The agent roadmap is hidden inside repeated Microsoft 365 work patterns.
 
 ## 0:25-0:45 Product Thesis
 
-The thesis is simple: do not ask users to design agents. Let AI discover the agents they already need.
+Syntrix is **Copilot Agent Architect**: an AI Agent Factory for Microsoft 365.
 
-Syntrix is a Master Agent system. It studies synthetic workspace signals, coordinates specialist agents, scores repeated work, generates a blueprint, applies governance gates, and recommends controlled improvements over time.
+The thesis is simple: Copilot helps people work faster. Syntrix helps organizations discover which Copilot agents should exist next.
 
-## 0:45-1:20 UI Walkthrough
+Syntrix turns scattered Microsoft 365-style collaboration signals into governed, review-ready Copilot Agent Blueprints.
+
+## 0:45-1:15 UI Walkthrough
 
 Open `http://localhost:8000`.
 
-Start at the hero: Syntrix, from scattered Copilot usage to personalized AI agents.
+Start at the hero: **Syntrix — Copilot Agent Architect**.
 
-Scroll to Workspace Signal Snapshot. Choose a workspace view such as Project Manager. Explain that this is a synthetic workspace simulation, not real company data.
+Use the Microsoft 365 Signals workspace selector. Explain that this is a Graph-ready signal model using simulated Microsoft 365 collaboration signals, not real tenant data.
 
-Point to Task Frequency and Syntrix Opportunity Score. These charts show which repeated workflows are strong agent candidates.
+Point to Pattern Intelligence. Syntrix detects repeated work patterns across the selected workspace view and makes the invisible work architecture visible.
 
-## 1:20-1:55 Reasoning Engine
+## 1:15-1:45 Opportunity Scoring
 
-Move to Syntrix Master Agent System.
+Show the task frequency chart and Impact Score chart.
 
-Click through the six agent cards:
+Explain that Syntrix scores work patterns using Business Impact, ROI, Confidence Score, Impact Score, repetition, time saved, and deployment readiness.
+
+This is the Agent Factory deciding where a Copilot Agent Blueprint is worth creating first.
+
+## 1:45-2:15 Multi-Agent Reasoning
+
+Move to the Syntrix Master Agent System.
+
+Click through the six Agent Factory roles:
 
 - Master Agent
 - Signal Discovery Agent
@@ -35,43 +47,53 @@ Click through the six agent cards:
 - Safety Governance Agent
 - Learning Loop Agent
 
-Then show the Reasoning Trace. This is the proof that Syntrix is not a chatbot. The system shows handoffs, decisions, and outputs from the local deterministic reasoning pipeline.
+Then show the Reasoning Trace. This proves Syntrix is not just a chatbot. It shows handoffs, decisions, outputs, and governance-aware reasoning from the deterministic local pipeline.
 
-## 1:55-2:20 Microsoft IQ Layer
+## 2:15-2:40 Copilot Agent Blueprint
+
+Scroll to **Copilot Agent Blueprint**.
+
+Explain that Syntrix generates a production-style review document with:
+
+- Agent Name
+- Department
+- Business Problem
+- Detected Work Pattern
+- Microsoft 365 Signals Used
+- Suggested Knowledge Sources
+- Suggested Actions
+- System Instructions
+- Guardrails
+- Estimated Hours Saved
+- Estimated Annual ROI
+- Confidence Score
+- Impact Score
+- Deployment Readiness
+- Ready for Copilot Studio Review notes
+- Evaluation Tests
+- Human Approval Points
+- Continuous Improvement Recommendation
+
+Emphasize: this is not a live deployment. It is a review-ready blueprint designed for Copilot Studio review and human governance.
+
+## 2:40-2:55 Microsoft IQ Layer
 
 Scroll to Microsoft IQ-ready architecture.
 
-Explain the three IQ layers:
+Explain the IQ story clearly:
 
-- Foundry IQ: live verified in Azure Foundry using synthetic governance documents.
-- Fabric IQ: represented through a local semantic ontology for users, work signals, opportunities, blueprints, guardrails, evaluation, and learning updates.
-- Work IQ: represented through synthetic collaboration-pattern signals such as meeting load, recurring tasks, output preferences, and approval sensitivity.
+- Foundry IQ was live verified in Azure Foundry using synthetic governance documents.
+- Fabric IQ is represented through a semantic ontology layer.
+- Work IQ is represented through Microsoft 365-style synthetic work-context signals.
 
-Show the evidence panel. The generated blueprint includes citations from synthetic sources, and the repo includes the proof screenshot at `docs/assets/foundry-iq-live-proof.png`.
+Show Blueprint Evidence and the cited synthetic sources. Mention that the proof screenshot is included at `docs/assets/foundry-iq-live-proof.png`.
 
-## 2:20-2:45 Generated Blueprint
+## 2:55-3:00 Closing
 
-Move to Generated Agent Blueprint.
+Close on the Syntrix Learning Loop.
 
-Explain that Syntrix generated a concrete agent artifact with:
-
-- Agent name
-- Target user
-- Recommendation rationale
-- Triggering work patterns
-- Capabilities
-- Guardrails
-- Human approval gates
-- Improvement path
-
-Point to Governance Gates. Emphasize that Syntrix recommends agents but does not autonomously send messages, change systems, or silently retrain.
-
-## 2:45-3:00 Learning Loop and Closing
-
-Close on Syntrix Learning Loop.
-
-Syntrix compares Week 1 and Week 3 signals and recommends a controlled Agent v1.1 update for human approval.
+Syntrix does not silently retrain a model. It observes new Microsoft 365-style signals and prepares controlled blueprint updates for human approval.
 
 Closing line:
 
-Syntrix turns scattered Copilot usage into the agent roadmap your company already needs, with reasoning, evidence, governance, and continuous improvement built in.
+Syntrix turns scattered Microsoft 365 work patterns into governed Copilot agents: discovered by Pattern Intelligence, designed by an Agent Factory, grounded by Foundry IQ, and ready for Copilot Studio Review.
