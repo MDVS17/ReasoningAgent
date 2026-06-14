@@ -15,8 +15,8 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 FRONTEND_DIR = BASE_DIR / "frontend"
 
 app = FastAPI(
-    title="Syntrix API",
-    description="Synthetic multi-agent reasoning API for turning Copilot-style work patterns into safe agent blueprints.",
+    title="Syntrix — Copilot Agent Architect API",
+    description="AI Agent Factory API for turning Microsoft 365-style synthetic work patterns into review-ready Copilot Agent Blueprints.",
     version="0.2.0",
 )
 

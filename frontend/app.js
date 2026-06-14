@@ -12,13 +12,13 @@ const masterAgentSystem = [
   {
     name: "Master Agent",
     tag: "Orchestrator",
-    role: "Directs the full discovery-to-blueprint reasoning loop.",
+    role: "Directs the Microsoft 365 signal-to-blueprint factory loop.",
     detail:
-      "The Master Agent studies the workspace signal stream, decides which specialist should reason next, and keeps Syntrix focused on designing useful agents rather than generic automation ideas.",
+      "The Master Agent studies simulated Microsoft 365 collaboration signals, decides which specialist should reason next, and keeps Syntrix focused on designing Copilot Agent Blueprints rather than generic automation ideas.",
     points: [
-      "Routes signals to the right specialist.",
-      "Keeps discovery, design, governance, and learning in sequence.",
-      "Combines scores, safety findings, and blueprint recommendations into one artifact.",
+      "Routes Microsoft 365-style signals to the right specialist.",
+      "Keeps pattern intelligence, blueprint generation, governance, and readiness in sequence.",
+      "Combines impact scores, safety findings, and deployment readiness into one artifact.",
     ],
     icon: "core",
     master: true,
@@ -26,39 +26,39 @@ const masterAgentSystem = [
   {
     name: "Signal Discovery Agent",
     tag: "Sensing",
-    role: "Finds recurring work signals inside the selected workspace view.",
+    role: "Finds recurring Microsoft 365-style signals inside the selected workspace view.",
     detail:
-      "This agent reviews synthetic Copilot-style interactions and extracts the repeated behaviors that suggest an agent opportunity may exist.",
+      "This agent reviews simulated Microsoft 365 collaboration signals and extracts repeated behaviors that can become a Copilot Agent Blueprint.",
     points: [
       "Groups interactions by workflow and role context.",
       "Separates one-off questions from repeated work patterns.",
-      "Feeds high-signal clusters into scoring.",
+      "Feeds high-signal clusters into Pattern Intelligence.",
     ],
     icon: "signal",
   },
   {
     name: "Pattern Scoring Agent",
     tag: "Ranking",
-    role: "Ranks repeated effort using the Syntrix Opportunity Score.",
+    role: "Ranks repeated effort using Impact Score, ROI, and Confidence Score signals.",
     detail:
-      "This agent evaluates frequency, time saved, repetition, business value, and risk so Syntrix can prioritize the agent opportunities most worth designing.",
+      "This agent evaluates frequency, time saved, repetition, business value, and risk so Syntrix can prioritize blueprint generation for the highest-impact Copilot Agent candidates.",
     points: [
-      "Scores opportunities with transparent local heuristics.",
+      "Scores business impact with transparent local heuristics.",
       "Balances productivity lift with governance risk.",
-      "Promotes the strongest opportunities into blueprint generation.",
+      "Promotes the strongest patterns into Copilot Agent Blueprint Generation.",
     ],
     icon: "score",
   },
   {
     name: "Blueprint Architect Agent",
     tag: "Design",
-    role: "Turns ranked patterns into a generated agent blueprint.",
+    role: "Turns ranked patterns into a review-ready Copilot Agent Blueprint.",
     detail:
-      "This agent converts the highest-value workflow pattern into a structured Syntrix Agent Blueprint with purpose, triggers, instructions, tools, tests, and approval points.",
+      "This agent converts the highest-value workflow pattern into a structured Copilot Agent Blueprint with purpose, triggers, instructions, tools, tests, and approval points for Copilot Studio review.",
     points: [
       "Creates instructions tied to the selected user's work.",
       "Specifies knowledge sources and suggested actions.",
-      "Defines evaluation tests before deployment.",
+      "Defines evaluation tests and deployment readiness checks before review.",
     ],
     icon: "blueprint",
   },
@@ -71,20 +71,20 @@ const masterAgentSystem = [
     points: [
       "Validates synthetic-data boundaries.",
       "Adds human approval gates for sensitive actions.",
-      "Keeps recommendations advisory until a human approves sensitive actions.",
+      "Keeps blueprint actions advisory until a human approves sensitive actions.",
     ],
     icon: "shield",
   },
   {
     name: "Learning Loop Agent",
     tag: "Improve",
-    role: "Recommends controlled blueprint updates as new signals appear.",
+    role: "Prepares controlled blueprint updates as new Microsoft 365-style signals appear.",
     detail:
-      "This agent closes the loop by comparing Week 1 and Week 3 signals, identifying where the agent design should improve, narrow, or add new tests.",
+      "This agent closes the loop by comparing Week 1 and Week 3 signals, identifying where the Copilot Agent Blueprint should improve, narrow, or add new tests.",
     points: [
-      "Tracks opportunity score movement over time.",
+      "Tracks Impact Score and Confidence Score movement over time.",
       "Suggests trigger and evaluation refinements.",
-      "Turns observed signal changes into safer future agent versions.",
+      "Turns observed signal changes into safer future blueprint versions.",
     ],
     icon: "loop",
   },
@@ -184,9 +184,9 @@ function renderBlueprint(payload) {
   const opportunity = payload.opportunity || (payload.opportunity_scores || [])[0] || {};
   $("blueprintName").textContent = blueprint.agent_name;
   $("blueprintTarget").textContent = `Target user: ${blueprint.target_user}`;
-  $("artifactScore").textContent = `Score ${opportunity.syntrix_opportunity_score ?? "--"}`;
+  $("artifactScore").textContent = `Impact Score ${opportunity.syntrix_opportunity_score ?? "--"}`;
   $("blueprintPurpose").textContent = blueprint.purpose;
-  $("blueprintRationale").textContent = opportunity.rationale || "Recommended by the Syntrix Master Agent from repeated workspace signals.";
+  $("blueprintRationale").textContent = opportunity.rationale || "Generated by the Syntrix Agent Factory from repeated Microsoft 365-style signals.";
   $("blueprintTriggers").innerHTML = blueprint.triggering_work_patterns.map((item) => `<li>${item}</li>`).join("");
   $("blueprintCapabilities").innerHTML = blueprint.suggested_tools_actions.map((item) => `<li>${item}</li>`).join("");
   $("blueprintGuardrails").innerHTML = blueprint.guardrails.map((item) => `<li>${item}</li>`).join("");
@@ -223,19 +223,19 @@ function renderIQCards(iq) {
   const cards = [
     {
       name: "Foundry IQ",
-      description: "Grounded knowledge pack with cited synthetic sources.",
+      description: "Live-verified Foundry IQ grounding with cited synthetic governance sources.",
       signals: iq.foundry_iq.signals,
       status: "Live verified",
     },
     {
       name: "Fabric IQ",
-      description: "Semantic ontology for users, workflows, agents, and guardrails.",
+      description: "Semantic ontology layer for users, workflows, agents, and guardrails.",
       signals: iq.fabric_iq.signals,
       status: "Semantic ontology",
     },
     {
       name: "Work IQ",
-      description: "Work-context signals from synthetic collaboration patterns.",
+      description: "Microsoft 365-style synthetic work-context signals.",
       signals: iq.work_iq.signals,
       status: "Synthetic work signals",
     },
@@ -271,7 +271,7 @@ function renderIQEvidence(data) {
   $("iqEvidenceSummary").textContent =
     data.recommended_blueprint?.evidence_summary ||
     evidence.evidence_summary ||
-    "Blueprint evidence will appear after workspace signals are analyzed.";
+    "Blueprint evidence will appear after Microsoft 365-style signals are analyzed.";
   $("iqEvidenceList").innerHTML = items
     .slice(0, 5)
     .map(
@@ -365,10 +365,10 @@ function renderAnalysis() {
 async function loadProfiles() {
   const payload = await api("/api/profiles");
   const labels = {
-    "All roles": "All workspace signals",
-    "Marketing Manager": "Marketing launch workspace",
-    "Project Manager": "Delivery operations workspace",
-    "HR Business Partner": "People advisory workspace",
+    "All roles": "All Microsoft 365 signals",
+    "Marketing Manager": "Marketing signal model",
+    "Project Manager": "Delivery operations signal model",
+    "HR Business Partner": "People advisory signal model",
   };
   const options = [{ profile: "All roles" }, ...payload.data];
   $("profileSelect").innerHTML = options

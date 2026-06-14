@@ -1,30 +1,27 @@
-# Syntrix
+# Syntrix — Copilot Agent Architect
 
 **Tagline:** From scattered Copilot usage to personalized AI agents.
 
-Syntrix is a hackathon-grade reasoning-agent product demo for companies that have adopted Copilot but still do not know which AI agents their teams actually need.
+Syntrix is an **AI Agent Factory for Microsoft 365** that discovers work patterns and generates review-ready **Copilot Agent Blueprints**.
 
 **Core thesis:** Do not ask users to design agents. Let AI discover the agents they already need.
 
 ## Problem Statement
 
-Companies are buying AI assistants, but most users do not naturally translate their daily work patterns into safe, useful, governed agents. Their Copilot usage is scattered across prompts, drafts, summaries, meetings, status updates, and follow-ups. The agent opportunity is hidden in repeated work patterns, not in any single prompt.
+Companies are buying Copilot, but most teams still do not know which Copilot Agents they should build first. Their Microsoft 365 work is scattered across meetings, messages, drafts, summaries, status updates, and follow-ups. The agent architecture opportunity is hidden in repeated work patterns, not in any single prompt.
 
 ## Solution Overview
 
-Syntrix analyzes synthetic Copilot-style workspace signals, detects repeated effort, scores agent opportunities, generates governed agent blueprints, grounds recommendations in approved synthetic knowledge, and recommends controlled improvements over time.
+Syntrix continuously discovers enterprise work patterns and designs the next generation of Microsoft 365 Copilot Agents. It analyzes simulated Microsoft 365 collaboration signals, applies Pattern Intelligence, scores business impact, generates governed Copilot Agent Blueprints, grounds outputs in approved synthetic knowledge, and prepares artifacts for Copilot Studio review.
 
 The primary flow is:
 
 ```text
-Workspace signals
--> Master Agent
--> Specialist agents
--> Reasoning trace
--> Opportunity scoring
--> Agent blueprint
--> Governance gates
--> Learning loop recommendation
+Microsoft 365 Signals
+-> Pattern Intelligence
+-> Agent Factory
+-> Copilot Agent Blueprint
+-> Ready for Copilot Studio Review
 ```
 
 Syntrix includes two demo surfaces:
@@ -34,26 +31,27 @@ Syntrix includes two demo surfaces:
 
 ## Why Syntrix Matters
 
-Most agent-building workflows start by asking users to define an agent. Syntrix starts from the work itself. It helps an enterprise move from scattered AI usage to a governed agent roadmap by identifying where repeated work already exists, why an agent is justified, and what controls must exist before the agent is trusted.
+Most agent-building workflows start by asking users to configure an agent. Syntrix starts from the work itself. It helps an enterprise move from scattered Copilot usage to an Agent Factory by identifying where repeated work exists, what the business impact and ROI could be, and which review gates must exist before a Copilot Agent Blueprint is ready for Copilot Studio review.
 
 ## Architecture Overview
 
 ```mermaid
 flowchart LR
-    A[Synthetic workspace signals] --> B[Syntrix Reasoning Engine]
-    B --> C[Master Agent]
-    C --> D[Signal Discovery Agent]
-    C --> E[Pattern Scoring Agent]
-    C --> F[Blueprint Architect Agent]
-    C --> G[Safety Governance Agent]
-    C --> H[Learning Loop Agent]
-    D --> I[Repeated work patterns]
-    E --> J[Syntrix Opportunity Score]
-    F --> K[Syntrix Agent Blueprint]
-    G --> L[Governance Gates]
-    H --> M[Controlled v1.1 recommendation]
-    N[Syntrix IQ Layer] --> F
-    N --> G
+    A[Microsoft 365-style synthetic signals] --> B[Pattern Intelligence]
+    B --> C[Syntrix Agent Factory]
+    C --> D[Master Agent]
+    D --> E[Signal Discovery Agent]
+    D --> F[Pattern Scoring Agent]
+    D --> G[Blueprint Architect Agent]
+    D --> H[Safety Governance Agent]
+    D --> I[Learning Loop Agent]
+    E --> J[Enterprise work patterns]
+    F --> K[Impact Score / ROI / Confidence Score]
+    G --> L[Copilot Agent Blueprint]
+    H --> M[Copilot Studio Review Gates]
+    I --> N[Deployment readiness update]
+    O[Syntrix IQ Layer] --> G
+    O --> H
 ```
 
 Key layers:
@@ -61,7 +59,7 @@ Key layers:
 - `backend/`: FastAPI app, routes, services, IQ layer, and pipeline orchestration.
 - `frontend/`: cinematic vanilla HTML/CSS/JS product demo.
 - `agents/`: deterministic product-facing reasoning modules.
-- `knowledge/`: synthetic Foundry IQ knowledge pack, Fabric-style ontology, and Work IQ-style signals.
+- `knowledge/`: Foundry IQ knowledge pack, Fabric-style ontology, and Work IQ-style synthetic signals.
 - `synthetic_data/`: synthetic Copilot-style interaction logs and week comparison data.
 - `evals/`: lightweight QA scripts, checklist, rubric, and test cases.
 - `docs/`: demo script, architecture notes, setup notes, storyboard, and submission checklist.
@@ -70,12 +68,12 @@ Key layers:
 
 Syntrix uses six product-facing agents:
 
-- **Master Agent:** orchestrates the end-to-end reasoning loop.
-- **Signal Discovery Agent:** detects repeated workflows from synthetic work signals.
-- **Pattern Scoring Agent:** ranks opportunities using the Syntrix Opportunity Score.
-- **Blueprint Architect Agent:** generates a structured Syntrix Agent Blueprint.
-- **Safety Governance Agent:** applies approval gates, traceability, and sensitive-content controls.
-- **Learning Loop Agent:** recommends controlled blueprint updates from Week 1 vs Week 3 signals.
+- **Master Agent:** orchestrates the Microsoft 365 signal-to-blueprint factory loop.
+- **Signal Discovery Agent:** detects repeated patterns from Microsoft 365-style synthetic signals.
+- **Pattern Scoring Agent:** ranks patterns using Impact Score, ROI, and Confidence Score signals.
+- **Blueprint Architect Agent:** generates a review-ready Copilot Agent Blueprint.
+- **Safety Governance Agent:** applies deployment readiness gates, traceability, and sensitive-content controls.
+- **Learning Loop Agent:** prepares controlled blueprint updates from Week 1 vs Week 3 signals.
 
 ## Syntrix Reasoning Engine
 
@@ -89,7 +87,7 @@ Syntrix uses six product-facing agents:
 - `learning_loop_recommendation`
 - `iq_evidence`
 
-The engine is deterministic, local, and explainable. It does not call paid APIs, use hidden model calls, or require live enterprise systems to run.
+The engine is deterministic, local, and explainable. It does not call Microsoft Graph, Copilot Studio, paid APIs, hidden model calls, or live enterprise systems to run.
 
 ## Microsoft IQ Integration
 
@@ -97,7 +95,7 @@ Syntrix uses a three-part Microsoft IQ story:
 
 - **Foundry IQ:** live verified in Azure Foundry with synthetic governance documents.
 - **Fabric IQ:** represented through a local semantic ontology layer.
-- **Work IQ:** represented through synthetic work-context signals.
+- **Work IQ:** represented through Microsoft 365-style synthetic work-context signals.
 
 ### Live Foundry IQ Verification
 
@@ -143,7 +141,7 @@ No Azure credentials, API keys, connection strings, tenant secrets, or private e
 - `EvaluationCase`
 - `LearningLoopUpdate`
 
-This is a local semantic ontology layer. It does not claim live Fabric integration.
+This is a local semantic ontology layer. It does not claim live Fabric IQ integration.
 
 ### Work IQ Synthetic Work Signals
 
@@ -157,11 +155,11 @@ This is a local semantic ontology layer. It does not claim live Fabric integrati
 - Stakeholder context
 - Approval sensitivity
 
-This is a local synthetic work-signal layer. It does not use real Microsoft 365, Graph, email, customer, employee, or company data.
+This is a local Microsoft 365-style synthetic work-context signal layer. It does not use real Microsoft Graph, Copilot Studio, Microsoft 365 tenant data, email, customer, employee, or company data.
 
 ## Safety and Governance
 
-Syntrix is a governed recommendation system, not an autonomous write agent.
+Syntrix is a governed Copilot Agent Blueprint generation system, not an autonomous write agent.
 
 - Human approval before external communication.
 - Human approval before system changes.
@@ -218,8 +216,8 @@ streamlit run app.py
 | `/api/health` | GET | Health check |
 | `/api/profiles` | GET | Synthetic workspace profile list |
 | `/api/interactions` | GET | Synthetic interaction records |
-| `/api/analyze` | POST | Full Syntrix Reasoning Engine response |
-| `/api/blueprint` | POST | Standalone blueprint generation |
+| `/api/analyze` | POST | Full Syntrix Agent Factory reasoning response |
+| `/api/blueprint` | POST | Standalone Copilot Agent Blueprint generation |
 | `/api/iq/status` | GET | IQ Layer status with Foundry live-verification metadata |
 | `/api/iq/evidence` | GET | Grounded evidence and citations |
 | `/api/iq/retrieve` | POST | Query local IQ evidence |
@@ -237,11 +235,11 @@ curl -X POST http://localhost:8000/api/analyze ^
 
 1. Open `http://localhost:8000`.
 2. Start with the thesis: "Do not ask users to design agents. Let AI discover the agents they already need."
-3. Use the Workspace Signal Snapshot selector.
-4. Show task frequency and Syntrix Opportunity Score.
-5. Walk through the Syntrix Master Agent System and reasoning trace.
-6. Show the generated Agent Blueprint.
-7. Point to Governance Gates.
+3. Use the Microsoft 365 Signals selector.
+4. Show task frequency and Impact Score.
+5. Walk through the Syntrix Agent Factory and reasoning trace.
+6. Show the generated Copilot Agent Blueprint.
+7. Point to Copilot Studio Review Gates.
 8. Show Microsoft IQ-ready architecture, Foundry live verification, and cited synthetic evidence.
 9. Close with the Syntrix Learning Loop: controlled recommendations, not silent retraining.
 
@@ -260,7 +258,7 @@ These verify that:
 - Synthetic data loads.
 - Reasoning pipeline runs.
 - At least three opportunities are scored.
-- A blueprint is generated.
+- A Copilot Agent Blueprint is generated.
 - Governance gates are present.
 - Learning loop recommendation is present.
 - IQ knowledge pack, ontology, signals, evidence, and citations load.
@@ -274,10 +272,10 @@ Additional public evaluation materials:
 
 ## Hackathon Judging Rubric Alignment
 
-- **Accuracy & relevance:** recommendations are tied to repeated synthetic work patterns and transparent scores.
+- **Accuracy & relevance:** Copilot Agent Blueprints are tied to repeated synthetic work patterns and transparent impact scores.
 - **Reasoning & multi-step thinking:** Master Agent coordinates specialist agents and returns a reasoning trace.
-- **Creativity & originality:** Syntrix reframes agent creation as discovery from work signals, not manual configuration.
-- **User experience & presentation:** cinematic frontend tells a complete product story with charts, blueprints, governance, IQ evidence, Foundry verification, and learning loop.
+- **Creativity & originality:** Syntrix reframes agent creation as Agent Factory blueprint generation from Microsoft 365-style signals, not manual configuration.
+- **User experience & presentation:** cinematic frontend tells a complete product story with Microsoft 365 Signals, Pattern Intelligence, Copilot Agent Blueprints, governance, IQ evidence, Foundry verification, and deployment readiness.
 - **Reliability & safety:** local deterministic pipeline, synthetic data policy, no secrets, no required paid APIs, human approval gates.
 - **Community vote:** clear thesis, strong enterprise relevance, and a polished story judges can understand quickly.
 
@@ -316,6 +314,6 @@ ReasoningAgent/
 ## Internal Product Labels
 
 - Syntrix Reasoning Engine
-- Syntrix Opportunity Score
-- Syntrix Agent Blueprint
+- Syntrix Impact Score
+- Syntrix Copilot Agent Blueprint
 - Syntrix Continuous Improvement Loop
