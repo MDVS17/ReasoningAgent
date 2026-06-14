@@ -20,9 +20,16 @@ class AgentOpportunity(BaseModel):
 
 
 class AgentBlueprint(BaseModel):
-    """A safe, personalized Syntrix Agent Blueprint."""
+    """A review-ready Microsoft 365 Copilot Agent Blueprint."""
 
     agent_name: str
+    department: str
+    business_problem: str
+    detected_work_pattern: str
+    microsoft_365_signals_used: List[str]
+    suggested_knowledge_sources: List[str]
+    suggested_actions: List[str]
+    system_instructions: List[str]
     purpose: str
     target_user: str
     triggering_work_patterns: List[str]
@@ -30,6 +37,13 @@ class AgentBlueprint(BaseModel):
     required_knowledge_sources: List[str]
     suggested_tools_actions: List[str]
     guardrails: List[str]
+    estimated_hours_saved: float
+    estimated_annual_roi: str
+    confidence_score: float
+    impact_score: float
+    deployment_readiness: str
+    copilot_studio_review_notes: str
+    foundry_iq_grounding: List[str]
     human_approval_points: List[str]
     evaluation_tests: List[str]
     continuous_improvement_recommendation: str

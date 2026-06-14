@@ -165,7 +165,7 @@ def run_reasoning_engine(
         else build_learning_loop_recommendation(week_comparison, profile, "")
     )
 
-    top_name = blueprint.agent_name if blueprint else "No agent recommended yet"
+    top_name = blueprint.agent_name if blueprint else "No Copilot Agent Blueprint generated yet"
     top_score = opportunity_scores[0]["syntrix_opportunity_score"] if opportunity_scores else None
     master_summary = {
         "system_name": "Syntrix Reasoning Engine",
@@ -174,10 +174,10 @@ def run_reasoning_engine(
         "workflows_detected": signal_discovery["workflow_count"],
         "specialist_agents_used": PRODUCT_AGENTS[1:],
         "orchestration_decision": (
-            f"Recommend {top_name} because repeated workspace signals produced the highest "
-            f"Syntrix Opportunity Score."
+            f"Generate {top_name} because repeated Microsoft 365-style signals produced the highest "
+            f"Impact Score."
             if selected
-            else "Continue monitoring. No repeated workflow pattern was strong enough to recommend."
+            else "Continue monitoring. No repeated workflow pattern was strong enough for blueprint generation."
         ),
         "top_recommendation": top_name,
         "top_opportunity_score": top_score,
@@ -204,7 +204,7 @@ def run_reasoning_engine(
             "step": 3,
             "agent": "Pattern Scoring Agent",
             "input": "Workflow clusters with frequency, time saved, repetition, value, and risk",
-            "decision": f"Ranked {len(opportunity_scores)} opportunities using Syntrix Opportunity Score.",
+            "decision": f"Ranked {len(opportunity_scores)} patterns using Impact Score.",
             "output": opportunity_scores[:3],
             "handoff_to": "Blueprint Architect Agent",
         },
@@ -239,6 +239,7 @@ def run_reasoning_engine(
         "reasoning_trace": reasoning_trace,
         "opportunity_scores": opportunity_scores,
         "recommended_blueprint": blueprint.model_dump() if blueprint else None,
+        "copilot_agent_blueprint": blueprint.model_dump() if blueprint else None,
         "governance_gates": governance_gates,
         "learning_loop_recommendation": learning_loop,
         "safety_review": safety_review.model_dump() if safety_review else None,

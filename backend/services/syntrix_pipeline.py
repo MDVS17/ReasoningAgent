@@ -56,6 +56,7 @@ def analyze(profile: str = "All roles") -> dict[str, Any]:
             "iq_alignment": iq_evidence["iq_alignment"],
             "citations": iq_evidence["citations"],
         }
+        engine_result["copilot_agent_blueprint"] = engine_result["recommended_blueprint"]
 
     task_frequency = (
         filtered.groupby(["profile", "workflow"], as_index=False)
@@ -108,5 +109,6 @@ def create_blueprint(profile: str = "All roles", workflow: str | None = None) ->
     return {
         "opportunity": selected.model_dump(by_alias=True),
         "blueprint": blueprint.model_dump(),
+        "copilot_agent_blueprint": blueprint.model_dump(),
         "safety_review": safety_review.model_dump(),
     }

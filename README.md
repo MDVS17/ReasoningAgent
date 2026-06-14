@@ -83,11 +83,14 @@ Syntrix uses six product-facing agents:
 - `reasoning_trace`
 - `opportunity_scores`
 - `recommended_blueprint`
+- `copilot_agent_blueprint`
 - `governance_gates`
 - `learning_loop_recommendation`
 - `iq_evidence`
 
 The engine is deterministic, local, and explainable. It does not call Microsoft Graph, Copilot Studio, paid APIs, hidden model calls, or live enterprise systems to run.
+
+The generated `copilot_agent_blueprint` is a review-ready Microsoft 365 Copilot Agent Blueprint with department, business problem, detected work pattern, Microsoft 365 Signals Used, suggested knowledge sources, suggested actions, system instructions, guardrails, estimated hours saved, estimated annual ROI, Confidence Score, Impact Score, deployment readiness, Copilot Studio review notes, Foundry IQ grounding, evaluation tests, human approval points, and continuous improvement recommendation.
 
 ## Microsoft IQ Integration
 

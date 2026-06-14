@@ -153,34 +153,84 @@
           </div>
           <div class="artifact-shell">
             <div class="artifact-header">
-              <span class="artifact-status">Review-ready blueprint</span>
+              <span class="artifact-status">Ready for Copilot Studio Review</span>
               <span id="artifactScore" class="artifact-score">Score --</span>
             </div>
             <p id="blueprintPurpose" class="purpose-copy"></p>
+            <div class="blueprint-review-grid">
+              <div class="review-field">
+                <span>Department</span>
+                <strong id="blueprintDepartment"></strong>
+              </div>
+              <div class="review-field">
+                <span>Estimated Hours Saved</span>
+                <strong id="blueprintHoursSaved"></strong>
+              </div>
+              <div class="review-field">
+                <span>Estimated Annual ROI</span>
+                <strong id="blueprintRoi"></strong>
+              </div>
+              <div class="review-field">
+                <span>Confidence Score</span>
+                <strong id="blueprintConfidence"></strong>
+              </div>
+              <div class="review-field">
+                <span>Impact Score</span>
+                <strong id="blueprintImpact"></strong>
+              </div>
+              <div class="review-field">
+                <span>Deployment Readiness</span>
+                <strong id="blueprintReadiness"></strong>
+              </div>
+            </div>
             <div class="recommendation-card">
-              <h3>Why Syntrix generated it</h3>
-              <p id="blueprintRationale"></p>
+              <h3>Business Problem</h3>
+              <p id="blueprintProblem"></p>
+            </div>
+            <div class="recommendation-card">
+              <h3>Detected Work Pattern</h3>
+              <p id="blueprintPattern"></p>
             </div>
             <div class="blueprint-columns">
               <div class="artifact-block">
-                <h3>Triggering work patterns</h3>
-                <ul id="blueprintTriggers"></ul>
+                <h3>Microsoft 365 Signals Used</h3>
+                <ul id="blueprintSignals"></ul>
               </div>
               <div class="artifact-block">
-                <h3>Capabilities</h3>
-                <ul id="blueprintCapabilities"></ul>
+                <h3>Suggested Knowledge Sources</h3>
+                <ul id="blueprintKnowledge"></ul>
+              </div>
+              <div class="artifact-block">
+                <h3>Suggested Actions</h3>
+                <ul id="blueprintActions"></ul>
+              </div>
+              <div class="artifact-block">
+                <h3>System Instructions</h3>
+                <ul id="blueprintInstructions"></ul>
               </div>
               <div class="artifact-block">
                 <h3>Guardrails</h3>
                 <ul id="blueprintGuardrails"></ul>
               </div>
               <div class="artifact-block">
-                <h3>Human approval gates</h3>
+                <h3>Evaluation Tests</h3>
+                <ul id="blueprintTests"></ul>
+              </div>
+              <div class="artifact-block">
+                <h3>Human Approval Points</h3>
                 <ul id="approvalGates"></ul>
+              </div>
+              <div class="artifact-block">
+                <h3>Foundry IQ Grounding</h3>
+                <ul id="blueprintGrounding"></ul>
               </div>
             </div>
             <div class="improvement-path">
-              <h3>Improvement path</h3>
+              <h3>Ready for Copilot Studio Review</h3>
+              <p id="blueprintReviewNotes"></p>
+            </div>
+            <div class="improvement-path">
+              <h3>Continuous Improvement Recommendation</h3>
               <p id="blueprintImprovement"></p>
             </div>
           </div>
